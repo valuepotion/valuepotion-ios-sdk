@@ -40,13 +40,12 @@ ValuePotion 클래스의 initializeWithClientId:secretKey: 메소드를 이용�
 일반적으로 AppDelegate 클래스의 application:didFinishLaunchingWithOptions: 메소드 내부에 추가하는 것이 적당합니다.
 client id와 secret key는 [valuepotion|http://valuepotion.com]에서 등록하신 앱 정보 화면에서 확인 가능합니다.
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ...
-
+    ...
     [[ValuePotion sharedInstance] initializeWithClientId:@"app client id" secretKey:@"app secret key"];
-    
     return YES;
 }
 ```
@@ -56,7 +55,7 @@ client id와 secret key는 [valuepotion|http://valuepotion.com]에서 등록하�
 사용자의 추가 정보에 대한 수집이 가능합니다. 해당 정보를 이용해 유저 코호트를 생성하여 활용할 수 있습니다.
 현재는 사용자의 계정 id, 성별, 연령 정보를 추가로 설정하실 수 있습니다.
 
-```
+```objc
 [[ValuePotion sharedInstance] setUserInfo:@{@"userId": @"valuepotion",
                                             @"birth": @"19841109",
                                             @"gender": @"M"}];
@@ -78,7 +77,7 @@ gender  |  남성인 경우 @"M", 여성인 경우 @"F" 문자열로 할당합�
 #### interstitial 캐싱하기
 앱 실행 초기에 미리 캠페인 데이터를 받아 캐싱하고, 이후 필요한 시점에 즉시 interstitial을 보여줄 수 있습니다.
 다음의 코드는 main_menu, item_shop 이라는 2가지 로케이션에 대해 interstitial을 캐싱하는 예제입니다.
-```
+```objc
 [[ValuePotion sharedInstance] cacheInterstitial:@"main_menu"];
 [[ValuePotion sharedInstance] cacheInterstitial:@"item_shop"];
 ```
@@ -88,7 +87,7 @@ interstitial을 화면에 보여주고자 할 때에는 openInterstitial: 메소
 openInterstitial: 메소드는 지정된 로케이션에 캐시가 존재하는 경우 해당 캐시를 가지고 즉시 화면에 보여줍니다.
 만약 해당 로케이션에 캐시가 존재하지 않으면 서버와 통신하여 데이터를 가져와 화면에 노출시키게 됩니다.
 다음은 main_menu 로케이션에서 interstitial을 띄우는 예제입니다.
-```
+```objc
 [[ValuePotion sharedInstance] openInterstitial:@"main_menu"];
 ```
 
@@ -96,7 +95,7 @@ openInterstitial: 메소드는 지정된 로케이션에 캐시가 존재하는 
 interstitial 데이터를 필요 시마다 서버로부터 받아와서 화면에 보여주게 되면 다소 딜레이가 발생할 수 있습니다.
 따라서 앱 실행 초기에 모든 로케이션에 대해 캐싱해 두고, 캐시가 존재하는 로케이션에 대해서만 interstitial을 노출하고 싶을 수도 있습니다.
 다음은 item_shop 로케이션에 캐시가 존재하는 경우에만 interstitial을 노출하도록 처리한 예제입니다.
-```
+```objc
 if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
     [[ValuePotion sharedInstance] openInterstitial:@"item_shop"];
 }
@@ -108,7 +107,7 @@ ValuePotionDelegate 프로토콜에는 캠페인 연동 시 활용 가능한 del
 
 ##### 캐싱 관련 delegate
 interstitial의 캐싱 성공 / 실패에 대한 delegate 처리를 할 수 있습니다.
-```
+```objc
 - (void)didCacheInterstitial:(NSString *)location
 {
     // interstitial 캐싱이 완료되었을 때 필요한 작업을 추가합니다.
@@ -122,7 +121,7 @@ interstitial의 캐싱 성공 / 실패에 대한 delegate 처리를 할 수 있�
 
 ##### 노출 관련 delegate
 interstitial의 노출 성공 / 실패 / 종료에 대한 delegate 처리를 할 수 있습니다.
-```
+```objc
 - (void)willOpenInterstitial:(NSString *)location
 {
     // interstitial이 노출될 때 필요한 작업을 추가합니다.
@@ -141,7 +140,7 @@ interstitial의 노출 성공 / 실패 / 종료에 대한 delegate 처리를 할
 
 ##### 액션 관련 delegate
 사용자가 interstitial 내부에서 발생시킨 액션에 대한 delegate 처리를 할 수 있습니다.
-```
+```objc
 - (void)didRequestOpenURL:(NSString *)URL location:(NSString *)location
 {
     // interstitial에서 외부 링크에 대한 클릭이 발생했을 때 호출됩니다.
@@ -172,7 +171,7 @@ interstitial의 노출 성공 / 실패 / 종료에 대한 delegate 처리를 할
 비결제 이벤트는 게임 내 결제와 무관한 이벤트로, 이벤트 이름과 값을 인자로 받습니다.
 비결제 이벤트의 경우 trackEvent:value: 메소드와 trackEvent:values: 메소드를 이용하여 전송할 수 있습니다.
 각각의 사용법은 다음과 같습니다.
-```
+```objc
 // value가 한 개인 경우. NSNumber 객체를 value 인자로 사용합니다.
 [[ValuePotion sharedInstance] trackEvent:@"stage_clear" value:@3];
 
@@ -182,7 +181,7 @@ interstitial의 노출 성공 / 실패 / 종료에 대한 delegate 처리를 할
 ```
 
 특별한 값이 존재하지 않는 이벤트인 경우 value 인자를 nil로 넘기면 됩니다.
-```
+```objc
 [[ValuePotion sharedInstance] trackEvent:@"login" value:nil];
 ```
 
@@ -190,7 +189,7 @@ interstitial의 노출 성공 / 실패 / 종료에 대한 delegate 처리를 할
 결제 이벤트는 게임 내 결제(In App Purchase)가 발생했을 때 사용되는 이벤트입니다.
 비결제 이벤트와 같이 이벤트 이름과 값을 인자로 받으며, 추가로 결제 금액과 결제 통화 정보를 필요로 합니다.
 다음은 결제 이벤트를 전송하는 예제입니다.
-```
+```objc
 [[ValuePotion sharedInstance] trackPurchaseEvent:@"gold_purchase" revenueAmount:0.99 currency:@"USD"];
 ```
 결제 통화를 나타내는 currency 인자는 SKProduct 객체의 priceLocale.localeIdentifier 속성 값을 그대로 사용하면 됩니다.
@@ -201,7 +200,7 @@ Push Notification API를 연동하면, 손쉽게 Push 타입의 캠페인을 생
 또한, 사용자 Push 메시지를 클릭하여 게임을 실행한 경우 특정 캠페인의 interstitial을 노출시키도록 하는 것도 가능합니다.
 Push Notification 연동을 위해서는 AppDelegate 클래스에서 다음과 같이 구현합니다.
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ...

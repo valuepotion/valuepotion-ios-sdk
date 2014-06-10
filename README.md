@@ -109,7 +109,7 @@ The following code is an example to send payment event occurred in your game.
 
 ValuePotion provides campaign of In-App Purchase (IAP) type. When a user makes revenue via an ad of IAP type, if you add extra info to payment event, you can get revenue report per campaign in detail. The following code is how to send payment event which occurred from IAP ad.
 
-* To see more information about delegate method `-(void)didRequestPurchase:location`, please see **didRequestPurchase:location:** item under **Advanced: Delegate Methods** section. *
+To see more information about delegate method `-(void)didRequestPurchase:location`, please see **didRequestPurchase:location:** item under **Advanced: Delegate Methods** section.
 
 ```objective-c
 - (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location

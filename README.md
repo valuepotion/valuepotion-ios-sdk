@@ -74,7 +74,7 @@ You can display interstitial ads only when caches are available.
 // Check if the cache for "item_shop" location exists.
 if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
   // then, display the ad for "item_shop" location.
-  [[ValuePotionManager sharedInstance] openInterstitial:@"item_shop"];
+  [[ValuePotion sharedInstance] openInterstitial:@"item_shop"];
 }
 ```
 
@@ -117,9 +117,8 @@ ValuePotion provides campaign of In-App Purchase (IAP) type. When a user makes r
 	// Proceed the requested payment
 
 	...
-
-	// User purchased some Diamond item for KRW 1,200. So you're attaching purchase object as payment event parameters.
-  [[ValuePotionManager sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW" purchase:purchase];
+  // User purchased some Diamond item for KRW 1,200. So you're attaching purchase object as payment event parameters.
+  [[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW" purchase:purchase];
 }
 ```
 
@@ -302,7 +301,7 @@ This delegate method is called when user pressed 'Purchase' button while interst
 {
 	// Put codes to process real purchase by using parameters: productId, quantity.
 	// purchase object contains properties: name, productId, quantity, campaignId, contentId.
-	// After purchase, call ValuePotionManager.TrackPurchaseEvent() method for revenue report.
+	// After purchase, call trackPurchaseEvent:revenueAmount:currency:purchase: method for revenue report.
 }
 ```
 

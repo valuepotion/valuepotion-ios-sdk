@@ -75,7 +75,7 @@ Xcode 프로젝트의 Build Phases 탭에서 Link Binary With Libraries 항목�
 // "item_shop" 로케이션에 캐싱된 광고가 존재하는지 체크합니다.
 if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
   // "item_shop" 로케이션에 대해 광고를 노출합니다.
-  [[ValuePotionManager sharedInstance] openInterstitial:@"item_shop"];
+  [[ValuePotion sharedInstance] openInterstitial:@"item_shop"];
 }
 ```
 
@@ -119,7 +119,7 @@ if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
   ...
 
   // 1,200원의 다이아몬드 아이템 구매가 발생. purchase 객체를 함께 전송
-  [[ValuePotionManager sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW" purchase:purchase];
+  [[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW" purchase:purchase];
 }
 ```
 
@@ -302,7 +302,7 @@ IAP 타입의 인터스티셜 광고 노출 상태에서 사용자가 '결제하
 {
   // 인자로 전달된 purchase 오브젝트를 가지고 실제 결제를 진행하도록 구현합니다.
   // purchase 오브젝트는 name, productId, quantity, campaignId, contentId 프로퍼티를 담고 있습니다.
-  // 결제가 완료된 이후 ValuePotionManager.TrackPurchaseEvent() 메소드를 사용해
+  // 결제가 완료된 이후 trackPurchaseEvent:revenueAmount:currency:purchase: 메소드를 사용해
   // 결제 이벤트를 전송하면 매출 리포트가 집계됩니다.
 }
 ```

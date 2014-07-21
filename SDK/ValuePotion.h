@@ -1,7 +1,7 @@
 //
 //  ValuePotion.h
 //  SDK
-//  Version 1.0.0
+//  Version 1.0.1
 //
 //  Created by Gil on 10/3/13.
 //  Copyright (c) 2013 ValuePotion. All rights reserved.
@@ -24,9 +24,9 @@
 - (void)initializeWithClientId:(NSString *)clientId secretKey:(NSString *)secretKey;
 
 #pragma mark - Interstitial Methods
-- (BOOL)hasCachedInterstitial:(NSString *)location;
-- (void)cacheInterstitial:(NSString *)location;
-- (void)openInterstitial:(NSString *)location;
+- (BOOL)hasCachedInterstitial:(NSString *)placement;
+- (void)cacheInterstitial:(NSString *)placement;
+- (void)openInterstitial:(NSString *)placement;
 
 #pragma mark - Tracking Methods
 - (void)trackEvent:(NSString *)eventName value:(NSNumber *)value;
@@ -63,46 +63,46 @@
 /**
  * interstitial을 성공적으로 캐싱한 경우 호출됨.
  */
-- (void)didCacheInterstitial:(NSString *)location;
+- (void)didCacheInterstitial:(NSString *)placement;
 
 /**
  * interstitial 캐싱 실패 시 호출됨.
  */
-- (void)didFailToCacheInterstitial:(NSString *)location error:(NSError *)error;
+- (void)didFailToCacheInterstitial:(NSString *)placement error:(NSError *)error;
 
 /**
  * interstitial 뷰가 열릴 때 호출됨.
  */
-- (void)willOpenInterstitial:(NSString *)location;
+- (void)willOpenInterstitial:(NSString *)placement;
 	
 /**
  * interstitial 뷰를 여는데 실패한 경우 호출됨.
  */
-- (void)didFailToOpenInterstitial:(NSString *)location error:(NSError *)error;
+- (void)didFailToOpenInterstitial:(NSString *)placement error:(NSError *)error;
 
 /**
  * interstitial 뷰가 닫힐 때 호출됨.
  */
-- (void)didCloseInterstitial:(NSString *)location;
+- (void)didCloseInterstitial:(NSString *)placement;
 
 /**
  * interstitial 뷰애서 사용자가 링크를 선택할 때 호출됨.
  */
-- (void)didRequestOpenURL:(NSString *)URL location:(NSString *)location;
+- (void)didRequestOpenURL:(NSString *)URL placement:(NSString *)placement;
 
 /**
  * interstitial 뷰에서 사용자가 구매하기를 선택할 때 호출됨.
  */
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location;
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement;
 
 /**
  * reward 캠페인의 interstitial 뷰가 화면에 나타날 때 호출됨.
  */
-- (void)didRequestRewards:(NSArray *)rewards location:(NSString *)location;
+- (void)didRequestRewards:(NSArray *)rewards placement:(NSString *)placement;
 
 /**
  * inplay 뷰에서 컨버전이 완료되었을 때 호출됨.
  */
-- (void)didCompleteConversion:(NSString *)location;
+- (void)didCompleteConversion:(NSString *)placement;
 
 @end

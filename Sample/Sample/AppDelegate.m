@@ -20,7 +20,7 @@
     self.window.rootViewController = mainViewController;
 
     [[ValuePotion sharedInstance] setDelegate:self];
-    [[ValuePotion sharedInstance] initializeWithClientId:@"app client id" secretKey:@"app secret key"];
+    [[ValuePotion sharedInstance] initializeWithClientId:@"8c7e885ced4a86e5465b4d0e11a2dd8b" secretKey:@"6360c49bddf9bea7"];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -56,39 +56,39 @@
 
 
 #pragma mark - ValuePotionDelegate
-- (void)didCacheInterstitial:(NSString *)location
+- (void)didCacheInterstitial:(NSString *)placement
 {
-    NSLog(@"didCacheInterstitial, location:%@", location);
+    NSLog(@"didCacheInterstitial, placement:%@", placement);
 }
 
-- (void)didFailToCacheInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToCacheInterstitial:(NSString *)placement error:(NSError *)error
 {
-    NSLog(@"didFailToCacheInterstitial, location:%@, error:%@", location, error.localizedDescription);
+    NSLog(@"didFailToCacheInterstitial, placement:%@, error:%@", placement, error.localizedDescription);
 }
 
-- (void)didOpenInterstitial:(NSString *)location
+- (void)willOpenInterstitial:(NSString *)placement
 {
-    NSLog(@"didOpenInterstitial, location:%@", location);
+    NSLog(@"willOpenInterstitial, placement:%@", placement);
 }
 
-- (void)didFailToOpenInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToOpenInterstitial:(NSString *)placement error:(NSError *)error
 {
-    NSLog(@"didFailToOpenInterstitial, location:%@, error:%@", location, error.localizedDescription);
+    NSLog(@"didFailToOpenInterstitial, placement:%@, error:%@", placement, error.localizedDescription);
 }
 
-- (void)didRequestOpenURL:(NSString *)URL location:(NSString *)location
+- (void)didRequestOpenURL:(NSString *)URL placement:(NSString *)placement
 {
-    NSLog(@"didRequestOpenURL, URL:%@, location:%@", URL, location);
+    NSLog(@"didRequestOpenURL, URL:%@, placement:%@", URL, placement);
 }
 
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
-    NSLog(@"didRequestPurchase, purchase:%@, location:%@", purchase, location);
+    NSLog(@"didRequestPurchase, purchase:%@, placement:%@", purchase, placement);
 }
 
-- (void)didRequestReward:(VPReward *)reward location:(NSString *)location
+- (void)didRequestRewards:(NSArray *)rewards placement:(NSString *)placement
 {
-    NSLog(@"didRequestReward, reward:%@, location:%@", reward, location);
+    NSLog(@"didRequestReward, rewards:%@, placement:%@", rewards, placement);
 }
 
 @end

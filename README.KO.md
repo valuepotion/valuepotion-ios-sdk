@@ -40,41 +40,41 @@ Xcode 프로젝트의 Build Phases 탭에서 Link Binary With Libraries 항목�
 ## 인터스티셜 광고 연동
 
 ### 1. 인터스티셜 광고 노출하기
-[밸류포션](https://valuepotion.com) 웹 사이트에서 생성한 캠페인을 인터스티셜 광고의 형태로 자신의 앱에 노출시킬 수 있습니다. 인터스티셜 광고를 화면에 띄우기 위해서는 로케이션을 지정해야 하며, 지정하지 않는 경우 "default" 로케이션이 사용됩니다.
+[밸류포션](https://valuepotion.com) 웹 사이트에서 생성한 캠페인을 인터스티셜 광고의 형태로 자신의 앱에 노출시킬 수 있습니다. 인터스티셜 광고를 화면에 띄우기 위해서는 플레이스먼트를 지정해야 하며, 지정하지 않는 경우 "default" 플레이스먼트가 사용됩니다.
 
-로케이션은 게임 내의 여러 지점에서 원하는 광고를 노출 시킬 수 있도록 하기 위해 부여하는 이름으로, 특별한 제약 없이 원하는 이름을
+플레이스먼트는 게임 내의 여러 지점에서 원하는 광고를 노출 시킬 수 있도록 하기 위해 부여하는 이름으로, 특별한 제약 없이 원하는 이름을
 문자열로 지정하면 됩니다.
 
 ```objective-c
-// "default" 로케이션에 대해 광고를 노출 합니다.
+// "default" 플레이스먼트에 대해 광고를 노출 합니다.
 [[ValuePotion sharedInstance] openInterstitial:nil];
 
-// "main_menu" 로케이션에 대해 광고를 노출 합니다.
+// "main_menu" 플레이스먼트에 대해 광고를 노출 합니다.
 [[ValuePotion sharedInstance] openInterstitial:@"main_menu"];
 ```
 
 
 ### 2. 인터스티셜 광고 캐싱하기
-`openInterstitial:` 메소드를 사용하면 HTTP 를 통해 광고 데이터를 받아온 후 화면에 보여주기 때문에, 네트워크 상태에 따라 다소 지연이 발생할 수 있습니다. 최초 게임 구동 시 원하는 로케이션에 대해 광고를 캐싱해두면,
+`openInterstitial:` 메소드를 사용하면 HTTP 를 통해 광고 데이터를 받아온 후 화면에 보여주기 때문에, 네트워크 상태에 따라 다소 지연이 발생할 수 있습니다. 최초 게임 구동 시 원하는 플레이스먼트에 대해 광고를 캐싱해두면,
 이후 원하는 시점에 지연 없이 해당 광고를 화면에 노출시킬 수 있습니다.
 
 ```objective-c
-// 최초 "after_login" 로케이션에 대해 광고를 캐싱합니다.
+// 최초 "after_login" 플레이스먼트에 대해 광고를 캐싱합니다.
 [[ValuePotion sharedInstance] cacheInterstitial:@"after_login"];
 
 ...
 
-// 원하는 시점에 "after_login" 로케이션에 대해 광고를 노출합니다.
+// 원하는 시점에 "after_login" 플레이스먼트에 대해 광고를 노출합니다.
 [[ValuePotion sharedInstance] openInterstitial:@"after_login"];
 ```
 
 ### 3. 캐시가 있을 때만 인터스티셜 광고 노출하기
-특정 로케이션에 캐싱된 광고가 확실히 존재할 때에만 광고를 노출시킬 수도 있습니다.
+특정 플레이스먼트에 캐싱된 광고가 확실히 존재할 때에만 광고를 노출시킬 수도 있습니다.
 
 ```objective-c
-// "item_shop" 로케이션에 캐싱된 광고가 존재하는지 체크합니다.
+// "item_shop" 플레이스먼트에 캐싱된 광고가 존재하는지 체크합니다.
 if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
-  // "item_shop" 로케이션에 대해 광고를 노출합니다.
+  // "item_shop" 플레이스먼트에 대해 광고를 노출합니다.
   [[ValuePotion sharedInstance] openInterstitial:@"item_shop"];
 }
 ```
@@ -109,10 +109,10 @@ if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
 
 밸류포션은 In App Purchase (이하 IAP) 타입의 캠페인을 제공합니다. 게임 사용자가 IAP 타입의 광고를 통해 매출을 발생시킨 경우, 결제 이벤트에 추가 정보를 더해 전송하면 더욱 상세한 캠페인 별 매출 리포트를 제공 받으실 수 있습니다. 다음은 IAP 광고로부터 발생한 결제 이벤트를 전송하는 예제입니다.
 
-`-(void)didRequestPurchase:location` 델리게이트 메소드에 대한 보다 자세한 정보는 **고급: 델리게이트 메소드** 섹션의 **didRequestPurchase:location:** 항목을 참고하십시오.
+`-(void)didRequestPurchase:placement` 델리게이트 메소드에 대한 보다 자세한 정보는 **고급: 델리게이트 메소드** 섹션의 **didRequestPurchase:placement:** 항목을 참고하십시오.
 
 ```objective-c
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
   // 요청 받은 결제를 진행합니다
 
@@ -231,7 +231,7 @@ Push Notification 을 비활성화 시키거나 Push Notification 활성화 여�
 `openInterstitial:` 메소드 호출 후, 인터스티셜 광고가 성공적으로 화면에 노출되는 시점에 호출됩니다.
 
 ```objective-c
-- (void)willOpenInterstitial:(NSString *)location
+- (void)willOpenInterstitial:(NSString *)placement
 {
   // 인터스티셜 광고가 열릴 때 필요한 작업이 있다면 여기에 구현합니다.
   // 실행 중인 게임을 pause 시키는 등의 처리를 할 수 있습니다.
@@ -242,7 +242,7 @@ Push Notification 을 비활성화 시키거나 Push Notification 활성화 여�
 `openInterstitial:` 메소드 호출 후, 인터스티셜 광고가 화면에 노출되지 못하는 경우 호출됩니다.
 
 ```objective-c
-- (void)didFailToOpenInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToOpenInterstitial:(NSString *)placement error:(NSError *)error
 {
   // 인터스티셜 광고 노출에 실패했을 때 필요한 작업이 있다면 여기에 구현합니다.
   // 실패한 원인은 error 를 통해 확인할 수 있습니다.
@@ -265,7 +265,7 @@ Push Notification 을 비활성화 시키거나 Push Notification 활성화 여�
 `cacheInterstitial:` 메소드 호출 후, 성공적으로 광고가 캐싱 되었을 때 호출됩니다.
 
 ```objective-c
-- (void)didCacheInterstitial:(NSString *)location
+- (void)didCacheInterstitial:(NSString *)placement
 {
   // 인터스티셜 광고 캐싱이 완료된 후 필요한 작업이 있다면 여기에 구현합니다.
 }
@@ -275,7 +275,7 @@ Push Notification 을 비활성화 시키거나 Push Notification 활성화 여�
 `cacheInterstitial:` 메소드 호출 후, 광고 캐싱에 실패했을 때 호출됩니다.
 
 ```objective-c
-- (void)didFailToCacheInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToCacheInterstitial:(NSString *)placement error:(NSError *)error
 {
   // 인터스티셜 광고 캐싱에 실패했을 때 필요한 작업이 있다면 여기에 구현합니다.
   // 실패한 원인은 error 를 통해 확인할 수 있습니다.
@@ -283,22 +283,22 @@ Push Notification 을 비활성화 시키거나 Push Notification 활성화 여�
 ```
 
 ### 3. Interstitial 액션 관련
-#### - (void)didRequestOpenURL:location:
+#### - (void)didRequestOpenURL:placement:
 인터스티셜 광고 노출 상태에서 사용자가 외부 링크를 클릭하는 경우 발생합니다.
 
 ```objective-c
-- (void)didRequestOpenURL:(NSURL *)URL location:(NSString *)location
+- (void)didRequestOpenURL:(NSURL *)URL placement:(NSString *)placement
 {
   // 외부 링크를 열 때 필요한 작업이 있다면 여기에 구현합니다.
   // 앱이 Background로 진입하게 되므로, 사용자 데이터를 저장하는 등의 처리를 할 수 있습니다.
 }
 ```
 
-#### - (void)didRequestPurchase:location:
+#### - (void)didRequestPurchase:placement:
 IAP 타입의 인터스티셜 광고 노출 상태에서 사용자가 '결제하기'를 선택하는 경우 발생합니다.
 
 ```objective-c
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
   // 인자로 전달된 purchase 오브젝트를 가지고 실제 결제를 진행하도록 구현합니다.
   // purchase 오브젝트는 name, productId, quantity, campaignId, contentId 프로퍼티를 담고 있습니다.
@@ -307,11 +307,11 @@ IAP 타입의 인터스티셜 광고 노출 상태에서 사용자가 '결제하
 }
 ```
 
-#### - (void)didRequestReward:location:
+#### - (void)didRequestReward:placement:
 Reward 타입의 인터스티셜 광고가 노출될 때 발생합니다.
 
 ```objective-c
-- (void)didRequestReward:(NSArray *)rewards location:(NSString *)location
+- (void)didRequestReward:(NSArray *)rewards placement:(NSString *)placement
 {
   // rewards 배열에는 해당 광고를 통해 사용자에게 지급하고자 하는 리워드 오브젝트들이 담겨있습니다.
   // 이 정보들을 가지고 사용자에게 리워드를 지급하는 코드를 구현합니다.

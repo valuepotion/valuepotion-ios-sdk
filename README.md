@@ -41,15 +41,15 @@ The following code is to initialize SDK. We recommend you to initialize SDK at `
 ## Integrate with Interstitial Ads
 
 ### 1. Display Interstitial Ads
-If you've created a campaign at [ValuePotion](https://valuepotion.com), you can display it as an interstitial ad at your own app. Before displaying interstitial ads, you should set up a location. Otherwise, "default" location will be used by default.
+If you've created a campaign at [ValuePotion](https://valuepotion.com), you can display it as an interstitial ad at your own app. Before displaying interstitial ads, you should set up a placement. Otherwise, "default" placement will be used by default.
 
-**Location** is a name to distinguish many points where you want to display ads. There's no restriction but it just should be a string.
+**placement** is a name to distinguish many points where you want to display ads. There's no restriction but it just should be a string.
 
 ```objective-c
-// Display ads at "default" location.
+// Display ads at "default" placement.
 [[ValuePotion sharedInstance] openInterstitial:nil];
 
-// Display ads at "main_menu" location.
+// Display ads at "main_menu" placement.
 [[ValuePotion sharedInstance] openInterstitial:@"main_menu"];
 ```
 
@@ -58,7 +58,7 @@ If you've created a campaign at [ValuePotion](https://valuepotion.com), you can 
 Using `openInterstitial:` method, the SDK will download data for ads via HTTP and display on screen. So it takes some time. If you cache ads when your game launches, you can display the ads at any time with no delay.
 
 ```objective-c
-// If you cache an ad for "after_login" location once,
+// If you cache an ad for "after_login" placement once,
 [[ValuePotion sharedInstance] cacheInterstitial:@"after_login"];
 
 ...
@@ -71,9 +71,9 @@ Using `openInterstitial:` method, the SDK will download data for ads via HTTP an
 You can display interstitial ads only when caches are available.
 
 ```objective-c
-// Check if the cache for "item_shop" location exists.
+// Check if the cache for "item_shop" placement exists.
 if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
-  // then, display the ad for "item_shop" location.
+  // then, display the ad for "item_shop" placement.
   [[ValuePotion sharedInstance] openInterstitial:@"item_shop"];
 }
 ```
@@ -109,10 +109,10 @@ The following code is an example to send payment event occurred in your game.
 
 ValuePotion provides campaign of In-App Purchase (IAP) type. When a user makes revenue via an ad of IAP type, if you add extra info to payment event, you can get revenue report per campaign in detail. The following code is how to send payment event which occurred from IAP ad.
 
-To see more information about delegate method `-(void)didRequestPurchase:location`, please see **didRequestPurchase:location:** item under **Advanced: Delegate Methods** section.
+To see more information about delegate method `-(void)didRequestPurchase:placement`, please see **didRequestPurchase:placement:** item under **Advanced: Delegate Methods** section.
 
 ```objective-c
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
 	// Proceed the requested payment
 
@@ -230,7 +230,7 @@ In `ValuePotionDelegate` protocol, some delegate methods are defined to integrat
 This delegate method is called when displaying interstitial ad is successfully done after calling `openInterstitial:` method.
 
 ```objective-c
-- (void)willOpenInterstitial:(NSString *)location
+- (void)willOpenInterstitial:(NSString *)placement
 {
 	// Put something you need to do when interstitial ad is displayed.
 	// For example, you can pause game here.
@@ -241,7 +241,7 @@ This delegate method is called when displaying interstitial ad is successfully d
 This delegate method is called when displaying interstitial ad is failed after calling `openInterstitial:` method.
 
 ```objective-c
-- (void)didFailToOpenInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToOpenInterstitial:(NSString *)placement error:(NSError *)error
 {
 	// Put something you need to do when interstitial ad gets failed.
 	// You can check reason of failure via error object.
@@ -252,7 +252,7 @@ This delegate method is called when displaying interstitial ad is failed after c
 This delegate method is called when interstitial ad closes.
 
 ```objective-c
-- (void)didCloseInterstitial:(NSString *)location
+- (void)didCloseInterstitial:(NSString *)placement
 {
 	// Put something you need to do when interstitial ad closes.
 	// If you paused your game during ad is open, now you can resume it here.
@@ -264,7 +264,7 @@ This delegate method is called when interstitial ad closes.
 This delegate method is called when caching interstitial ad is successfully done after calling `cacheInterstitial:` method.
 
 ```objective-c
-- (void)didCacheInterstitial:(NSString *)location
+- (void)didCacheInterstitial:(NSString *)placement
 {
 	// Put something you need to do when caching interstitial ad is successfully done
 }
@@ -274,7 +274,7 @@ This delegate method is called when caching interstitial ad is successfully done
 This delegate method is called when caching interstitial ad is failed after calling `cacheInterstitial:` method.
 
 ```objective-c
-- (void)didFailToCacheInterstitial:(NSString *)location error:(NSError *)error
+- (void)didFailToCacheInterstitial:(NSString *)placement error:(NSError *)error
 {
 	// Put something you need to do when caching interstitial ad is failed.
 	// You can check reason of failure via error object.
@@ -282,22 +282,22 @@ This delegate method is called when caching interstitial ad is failed after call
 ```
 
 ### 3. Delegate Methods for Interstitial Ad Action
-#### - (void)didRequestOpenURL:location:
+#### - (void)didRequestOpenURL:placement:
 This delegate method is called when user clicks external url while interstitial ad is displayed.
 
 ```objective-c
-- (void)didRequestOpenURL:(NSURL *)URL location:(NSString *)location
+- (void)didRequestOpenURL:(NSURL *)URL placement:(NSString *)placement
 {
 	// Put something you need to do when external url gets opened.
 	// App soon goes background, so you can do something like saving user data, etc.
 }
 ```
 
-#### - (void)didRequestPurchase:location:
+#### - (void)didRequestPurchase:placement:
 This delegate method is called when user pressed 'Purchase' button while interstitial ad of IAP type is displayed.
 
 ```objective-c
-- (void)didRequestPurchase:(VPPurchase *)purchase location:(NSString *)location
+- (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
 	// Put codes to process real purchase by using parameters: productId, quantity.
 	// purchase object contains properties: name, productId, quantity, campaignId, contentId.
@@ -305,11 +305,11 @@ This delegate method is called when user pressed 'Purchase' button while interst
 }
 ```
 
-#### - (void)didRequestReward:location:
+#### - (void)didRequestReward:placement:
 This delegate method is called when interstitial ad of Reward type is displayed.
 
 ```objective-c
-- (void)didRequestReward:(NSArray *)rewards location:(NSString *)location
+- (void)didRequestReward:(NSArray *)rewards placement:(NSString *)placement
 {
   // Array 'rewards' contains rewards which ad is about to give users.
   // With this information you should implement actual code to give rewards to users.

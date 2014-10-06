@@ -97,6 +97,11 @@ If there's no specific value needed, you can use event name only.
 [[ValuePotion sharedInstance] trackEvent:@"enter_item_shop" value:nil];
 ```
 
+If you want to build a hierarchy of events, you can specify that like following:
+```objective-c
+[[ValuePotion sharedInstance] trackEvent:@"get_ruby" category:@"item" label:@"reward_for_login" value:@30];
+```
+
 
 ### 2. Payment Event
 Payment event is tracked when In-App Purchase(In-App Billing) has occurred. If you track payment events, you can check daily statistics of Revenue, ARPU, ARPPU, PPU, etc.

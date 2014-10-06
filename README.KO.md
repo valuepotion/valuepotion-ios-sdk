@@ -98,6 +98,11 @@ if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
 [[ValuePotion sharedInstance] trackEvent:@"enter_item_shop" value:nil];
 ```
 
+이벤트에 계층을 두어 구분하고 싶을 때는 다음과 같이 사용할 수 있습니다.
+```objective-c
+[[ValuePotion sharedInstance] trackEvent:@"get_ruby" category:@"item" label:@"reward_for_login" value:@30];
+```
+
 
 ### 2. 결제 이벤트 트래킹
 결제 이벤트는 게임 내 구매(In App Purchase)가 발생했을 때 전송하는 이벤트입니다. 결제 이벤트를 트래킹하면 매출액, ARPU, ARPPU, PPU 등 유용한 지표들의 추이를 매일 확인할 수 있습니다. 다음은 게임 내에서 발생한 결제 이벤트를 전송하는 예제입니다.

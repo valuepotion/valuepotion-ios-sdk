@@ -86,8 +86,8 @@ You can analyze your game with event tracking. And based on events you can creat
 Non-payment event is not related to In-App Purchase. You can use non-payment event to analyze user behavior. To use non-payment event, you should define its name and values. The following code is an example to send non-payment event.
 
 ```objective-c
-// User has been cleared 3rd stage.
-[[ValuePotion sharedInstance] trackEvent:@"stage_clear" value:@3];
+// User has got 3 items.
+[[ValuePotion sharedInstance] trackEvent:@"get_item_ruby" value:@3];
 ```
 
 If there's no specific value needed, you can use event name only.
@@ -104,7 +104,10 @@ The following code is an example to send payment event occurred in your game.
 
 ```objective-c
 // User purchased $0.99 coin item.
-[[ValuePotion sharedInstance] trackPurchaseEvent:@"purchase_coin" revenueAmount:0.99 currency:@"USD"];
+// transactionId: Pass transactionIdentifier property of SKPaymentTransaction instance.
+// productId: Pass productIdentifier property of SKProduct instance.
+[[ValuePotion sharedInstance] trackPurchaseEvent:@"purchase_coin" revenueAmount:0.99 currency:@"USD"
+  transactionId:@"1000000126295147" productId:@"com.valuepotion.tester.item_diamond_1"];
 ```
 
 ValuePotion provides campaign of In-App Purchase (IAP) type. When a user makes revenue via an ad of IAP type, if you add extra info to payment event, you can get revenue report per campaign in detail. The following code is how to send payment event which occurred from IAP ad.
@@ -117,8 +120,12 @@ To see more information about delegate method `-(void)didRequestPurchase:placeme
 	// Proceed the requested payment
 
 	...
-  // User purchased some Diamond item for KRW 1,200. So you're attaching purchase object as payment event parameters.
-  [[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW" purchase:purchase];
+  // User purchased some Diamond item for KRW 1,200.
+  // transactionId: Pass transactionIdentifier property of SKPaymentTransaction instance.
+  // productId: Pass productIdentifier property of SKProduct instance.
+  [[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" revenueAmount:1200 currency:@"KRW"
+    transactionId:@"1000000126295148" productId:@"com.valuepotion.tester.item_diamond_1"
+    campaignId:purchase.campaignId contentId:purchase.contentId];
 }
 ```
 
@@ -141,7 +148,7 @@ If you send events from an app built with test mode, you should see the events o
 
 
 ## Integrate User Information
-You can collect user information as well as events. Possible fields of user information are user id, server id which user belongs to, birthdate, gender, level and number of friends. All of them are optional so you can choose which fields to collect.
+You can collect user information as well as events. Possible fields of user information are user id, server id which user belongs to, birthdate, gender, level, number of friends and type of user account. All of them are optional so you can choose which fields to collect.
 
 You can use this information for marketing by creating user cohort. You can update your information when it changes to integrate with ValuePotion.
 
@@ -152,19 +159,20 @@ You can use this information for marketing by creating user cohort. You can upda
 [[ValuePotion sharedInstance] setUserGender:@"M"];
 [[ValuePotion sharedInstance] setUserLevel:32];
 [[ValuePotion sharedInstance] setUserFriends:219];
+[[ValuePotion sharedInstance] setUserAccountType:@"guest"];
 ```
 
 The following is the detail on each field.
 
-Field         | Description
-------------- | ------------
-**userId**    | User account id used in game
-**serverId**  | If you need to distinguish users by server which they belong to, you should set serverId.<br>Then you can get statistics based on serverId.
-**birth**     | Date of birth in YYYYMMDD. <br>If you know only year of birth, fill last four digits with "0" like "19840000".<br>If you know only date of birth(but not year), fill first four digits with "0" like "00001109".
-**gender**    | "M" for male, "F" for female.
-**level**     | Level of user in game.
-**friends**   | Number of user's friends.
-
+Field           | Description
+--------------- | ------------
+**userId**      | User account id used in game
+**serverId**    | If you need to distinguish users by server which they belong to, you should set serverId.<br>Then you can get statistics based on serverId.
+**birth**       | Date of birth in YYYYMMDD. <br>If you know only year of birth, fill last four digits with "0" like "19840000".<br>If you know only date of birth(but not year), fill first four digits with "0" like "00001109".
+**gender**      | "M" for male, "F" for female.
+**level**       | Level of user in game.
+**friends**     | Number of user's friends.
+**accountType** | Type of user account. (facebook, google, guest, etc.)
 
 ## Integrate Push Notification
 If you integrate with Push Notification API, you can easily create campaigns of Push type and send message to users. So you can wake up users who haven't played game for long time, or you can also notify users new events in game, etc.
@@ -288,8 +296,8 @@ This delegate method is called when user clicks external url while interstitial 
 ```objective-c
 - (void)didRequestOpenURL:(NSURL *)URL placement:(NSString *)placement
 {
-	// Put something you need to do when external url gets opened.
-	// App soon goes background, so you can do something like saving user data, etc.
+  // Put something you need to do when external url gets opened.
+  // App soon goes background, so you can do something like saving user data, etc.
 }
 ```
 
@@ -299,9 +307,10 @@ This delegate method is called when user pressed 'Purchase' button while interst
 ```objective-c
 - (void)didRequestPurchase:(VPPurchase *)purchase placement:(NSString *)placement
 {
-	// Put codes to process real purchase by using parameters: productId, quantity.
-	// purchase object contains properties: name, productId, quantity, campaignId, contentId.
-	// After purchase, call trackPurchaseEvent:revenueAmount:currency:purchase: method for revenue report.
+  // Put codes to process real purchase by using parameters: productId, quantity.
+  // purchase object contains properties: name, productId, quantity, campaignId, contentId.
+  // After purchase, call trackPurchaseEvent:revenueAmount:currency:transactionId:productId:campaignId:contentId:
+  // method for revenue report.
 }
 ```
 

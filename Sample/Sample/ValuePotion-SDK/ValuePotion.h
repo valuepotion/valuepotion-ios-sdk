@@ -1,7 +1,7 @@
 //
 //  ValuePotion.h
 //  SDK
-//  Version 1.0.2
+//  Version 1.0.3
 //
 //  Created by Gil on 10/3/13.
 //  Copyright (c) 2013 ValuePotion. All rights reserved.
@@ -30,11 +30,14 @@
 
 #pragma mark - Tracking Methods
 - (void)trackEvent:(NSString *)eventName value:(NSNumber *)value;
-- (void)trackEvent:(NSString *)eventName values:(NSDictionary *)values;
-- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency;
-- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId;
-- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency purchase:(VPPurchase *)purchase;
-- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId purchase:(VPPurchase *)purchase;
+- (void)trackEvent:(NSString *)eventName category:(NSString *)category label:(NSString *)label value:(NSNumber *)value;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId productId:(NSString *)productId;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId productId:(NSString *)productId campaignId:(NSString *)campaignId contentId:(NSString *)contentId;
+- (void)trackEvent:(NSString *)eventName values:(NSDictionary *)values __deprecated;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency __deprecated;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId __deprecated;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency purchase:(VPPurchase *)purchase __deprecated;
+- (void)trackPurchaseEvent:(NSString *)eventName revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId purchase:(VPPurchase *)purchase __deprecated;
 
 #pragma mark - Push Notification Methods
 - (void)registerForPushNotification;
@@ -44,7 +47,6 @@
 - (void)forwardPushInfo:(NSDictionary *)info;
 
 #pragma mark - UserInfo Methods
-- (void)setUserInfo:(NSDictionary *)userInfo;
 - (NSDictionary *)userInfo;
 - (void)setUserId:(NSString *)userId;
 - (void)setUserServerId:(NSString *)serverId;
@@ -52,7 +54,9 @@
 - (void)setUserGender:(NSString *)gender;
 - (void)setUserLevel:(double)level;
 - (void)setUserFriends:(double)friends;
+- (void)setUserAccountType:(NSString *)accountType;
 - (void)setUserValue:(id)value forKey:(NSString *)key;
+- (void)setUserInfo:(NSDictionary *)userInfo __deprecated;
 
 @end
 

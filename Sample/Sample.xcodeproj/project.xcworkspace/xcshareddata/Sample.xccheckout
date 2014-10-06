@@ -10,19 +10,19 @@
 	<string>Sample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0292140CDC96EB344E729C529DE8270E2F7C8DF5</key>
+		<string>ssh://dgit.co/sng2nara/valuepotion_sdk.git</string>
 		<key>9255AB6E8B07040549CC9CF2C2526FF2CE93524B</key>
 		<string>github.com:valuepotion/valuepotion-ios-sdk.git</string>
-		<key>DD9F9583-518C-4090-95DE-EC329CF9B23C</key>
-		<string>ssh://dgit.co/sng2nara/valuepotion_sdk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Sample/Sample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0292140CDC96EB344E729C529DE8270E2F7C8DF5</key>
+		<string>../../../../valuepotion_sdk</string>
 		<key>9255AB6E8B07040549CC9CF2C2526FF2CE93524B</key>
 		<string>../../..</string>
-		<key>DD9F9583-518C-4090-95DE-EC329CF9B23C</key>
-		<string>../../../../valuepotion_sdk</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:valuepotion/valuepotion-ios-sdk.git</string>
@@ -36,7 +36,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DD9F9583-518C-4090-95DE-EC329CF9B23C</string>
+			<string>0292140CDC96EB344E729C529DE8270E2F7C8DF5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>valuepotion_sdk</string>
 		</dict>

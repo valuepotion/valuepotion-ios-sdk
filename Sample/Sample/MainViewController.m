@@ -54,7 +54,7 @@
     
     // purchase event
     NSLog(@"Track purchase event.");
-    [[ValuePotion sharedInstance] trackPurchaseEvent:@"item1_purchase" revenueAmount:0.99 currency:@"USD"];
+    [[ValuePotion sharedInstance] trackPurchaseEvent:@"item1_purchase" revenueAmount:0.99 currency:@"USD" transactionId:nil productId:nil];
 }
 
 @end

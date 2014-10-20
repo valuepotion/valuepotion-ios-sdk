@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.0.4
+* Fixed a bug that incorrect session measurements occasionally occur.
+
 ## v1.0.3
 * New APIs
 ```objective-c

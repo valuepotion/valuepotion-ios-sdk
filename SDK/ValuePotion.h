@@ -1,7 +1,7 @@
 //
 //  ValuePotion.h
 //  SDK
-//  Version 1.0.3
+//  Version 1.0.4
 //
 //  Created by Gil on 10/3/13.
 //  Copyright (c) 2013 ValuePotion. All rights reserved.

@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.0.5
+* Improved stability of interstitial view.
+* Fixed a bug in campaign blocking function.
+
 ## v1.0.4
 * Fixed a bug that incorrect session measurements occasionally occur.
 

@@ -134,6 +134,11 @@ To see more information about delegate method `-(void)didRequestPurchase:placeme
 }
 ```
 
+You can also specify category and label like you did with non-payment event.
+```objective-c
+[[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" category:@"iap" label:@"shop" revenueAmount:0.99 currency:@"USD" transactionId:@"1000000126295149" productId:@"com.valuepotion.tester.item_diamond_1" campaignId:nil contentId:nil];
+```
+
 #### Reference
 * For accurate analysis, please specify real purchase amount and currency.
 * We follow [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) for currency.

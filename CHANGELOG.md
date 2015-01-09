@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.0.6
+* You can now specify category and label for payment events.
+```objective-c
+  - (void)trackPurchaseEvent:(NSString *)eventName category:(NSString *)category label:(NSString *)label revenueAmount:(double)revenueAmount currency:(NSString *)currency transactionId:(NSString *)transactionId productId:(NSString *)productId campaignId:(NSString *)campaignId contentId:(NSString *)contentId;
+```
+
 ## v1.0.5
 * Improved stability of interstitial view.
 * Fixed a bug in campaign blocking function.

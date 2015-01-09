@@ -134,6 +134,10 @@ if ([[ValuePotion sharedInstance] hasCachedInterstitial:@"item_shop"]) {
     campaignId:purchase.campaignId contentId:purchase.contentId];
 }
 ```
+비결제 이벤트처럼 category 와 label 을 지정할 수 있습니다.
+```objective-c
+[[ValuePotion sharedInstance] trackPurchaseEvent:@"iap_diamond" category:@"iap" label:@"shop" revenueAmount:0.99 currency:@"USD" transactionId:@"1000000126295149" productId:@"com.valuepotion.tester.item_diamond_1" campaignId:nil contentId:nil];
+```
 
 #### 참고
 * 정확한 집계를 위해, 결제 이벤트 전송 시에는 실제 발생한 결제 금액과 통화 코드를 지정해주십시오.

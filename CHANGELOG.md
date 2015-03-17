@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.0.7
+* Improved stability.
+
 ## v1.0.6
 * You can now specify category and label for payment events.
 ```objective-c

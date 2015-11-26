@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.0
+* Support banner
+* Support Xcode7 bitcode
+
 ## v1.0.7
 * Improved stability.
 

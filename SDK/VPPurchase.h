@@ -1,8 +1,8 @@
 //
 //  VPPurchase.h
 //  SDK
+//  Version 1.0.7
 //
-//  Created by Gil on 11/20/13.
 //  Copyright (c) 2013 ValuePotion. All rights reserved.
 //
 

@@ -3,18 +3,24 @@
 //  SDK
 //  Version 1.0.7
 //
-//  Created by Gil on 10/3/13.
 //  Copyright (c) 2013 ValuePotion. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
+#import "VPAdView.h"
 #import "VPPurchase.h"
 #import "VPReward.h"
+#import "VPAdDimension.h"
+#import "VPAdRequestOptions.h"
+#import "VPAdContainer.h"
+#import "VPAdItem.h"
+
+@protocol ValuePotionDelegate;
+
 
 @interface ValuePotion : NSObject
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, weak) id<ValuePotionDelegate> delegate;
 @property (nonatomic, copy) NSString *clientId;
 @property (nonatomic, copy) NSString *secretKey;
 @property (nonatomic, assign) BOOL test;
@@ -27,6 +33,9 @@
 - (BOOL)hasCachedInterstitial:(NSString *)placement;
 - (void)cacheInterstitial:(NSString *)placement;
 - (void)openInterstitial:(NSString *)placement;
+
+#pragma mark - RequestOptions Methods
+- (void)requestAdWithOptions:(VPAdRequestOptions *)options completion:(VPAdRequestCallback)completion;
 
 #pragma mark - Tracking Methods
 - (void)trackEvent:(NSString *)eventName value:(NSNumber *)value;
@@ -91,7 +100,7 @@
 - (void)didCloseInterstitial:(NSString *)placement;
 
 /**
- * interstitial 뷰애서 사용자가 링크를 선택할 때 호출됨.
+ * interstitial 뷰에서 사용자가 링크를 선택할 때 호출됨.
  */
 - (void)didRequestOpenURL:(NSString *)URL placement:(NSString *)placement;
 

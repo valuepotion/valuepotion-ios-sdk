@@ -64,6 +64,11 @@
 		28442C2E18B3034A00001CD7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		28442C3018B3035000001CD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		28442C3218B3037100001CD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2BCD0CB91C06CC98003E7825 /* VPAdContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdContainer.h; path = ../../../SDK/VPAdContainer.h; sourceTree = "<group>"; };
+		2BCD0CBA1C06CC98003E7825 /* VPAdDimension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdDimension.h; path = ../../../SDK/VPAdDimension.h; sourceTree = "<group>"; };
+		2BCD0CBB1C06CC98003E7825 /* VPAdItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdItem.h; path = ../../../SDK/VPAdItem.h; sourceTree = "<group>"; };
+		2BCD0CBC1C06CC98003E7825 /* VPAdRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdRequestOptions.h; path = ../../../SDK/VPAdRequestOptions.h; sourceTree = "<group>"; };
+		2BCD0CBD1C06CC98003E7825 /* VPAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdView.h; path = ../../../SDK/VPAdView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +181,11 @@
 			children = (
 				28442C2918B302EA00001CD7 /* libValuePotion.a */,
 				28442C2A18B302EA00001CD7 /* ValuePotion.h */,
+				2BCD0CB91C06CC98003E7825 /* VPAdContainer.h */,
+				2BCD0CBA1C06CC98003E7825 /* VPAdDimension.h */,
+				2BCD0CBB1C06CC98003E7825 /* VPAdItem.h */,
+				2BCD0CBC1C06CC98003E7825 /* VPAdRequestOptions.h */,
+				2BCD0CBD1C06CC98003E7825 /* VPAdView.h */,
 				28442C2B18B302EA00001CD7 /* VPPurchase.h */,
 				28442C2C18B302EA00001CD7 /* VPReward.h */,
 			);

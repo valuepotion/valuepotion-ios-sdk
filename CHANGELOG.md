@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.1.2
+* Cache assets at Library/Caches
+
+## v1.1.1
+* Improved stability.
+
 ## v1.1.0
 * Support banner
 * Support Xcode7 bitcode

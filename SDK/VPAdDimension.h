@@ -49,6 +49,11 @@
 + (instancetype)dimensionWith320x480;
 
 /**
+ * Interstitial 광고 표시를 위한 dimension
+ */
++ (instancetype)dimensionForInterstitial;
+
+/**
  * 임의의 크기를 가진 dimension 생성
  */
 + (instancetype)dimensionWithWidth:(NSInteger)width height:(NSInteger)height;

@@ -1,6 +1,6 @@
 //
 //  VPAdItem.h
-//  SDK
+//  Version 1.1.4
 //
 //  Created by KimHansaem on 2015. 10. 28..
 //  Copyright © 2015년 ValuePotion. All rights reserved.

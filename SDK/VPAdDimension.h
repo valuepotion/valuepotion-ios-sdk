@@ -1,7 +1,6 @@
 //
 //  VPAdDimension.h
-//  SDK
-//  Version 1.1.0
+//  Version 1.1.4
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //

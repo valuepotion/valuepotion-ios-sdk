@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.1.4
+* Set default background color of VPAdView transparent.
+
 ## v1.1.3
 * Fix issue that interstitials may not cache assets.
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2699D1C31C1AC11400D88690 /* libValuePotion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2699D1BA1C1AC11400D88690 /* libValuePotion.a */; };
 		281C004718B2FF0B0020C962 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C004618B2FF0B0020C962 /* Foundation.framework */; };
 		281C004918B2FF0B0020C962 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C004818B2FF0B0020C962 /* CoreGraphics.framework */; };
 		281C004B18B2FF0B0020C962 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C004A18B2FF0B0020C962 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		281C006C18B2FF0B0020C962 /* SampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 281C006B18B2FF0B0020C962 /* SampleTests.m */; };
 		281C007B18B2FFDC0020C962 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281C007918B2FFDC0020C962 /* MainViewController.m */; };
 		281C007C18B2FFDC0020C962 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281C007A18B2FFDC0020C962 /* MainViewController.xib */; };
-		28442C2D18B302EA00001CD7 /* libValuePotion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28442C2918B302EA00001CD7 /* libValuePotion.a */; };
 		28442C2F18B3034A00001CD7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28442C2E18B3034A00001CD7 /* CoreTelephony.framework */; };
 		28442C3118B3035000001CD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28442C3018B3035000001CD7 /* AdSupport.framework */; };
 		28442C3318B3037100001CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28442C3218B3037100001CD7 /* SystemConfiguration.framework */; };
@@ -38,6 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2699D1BA1C1AC11400D88690 /* libValuePotion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libValuePotion.a; sourceTree = "<group>"; };
+		2699D1BB1C1AC11400D88690 /* ValuePotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePotion.h; sourceTree = "<group>"; };
+		2699D1BC1C1AC11400D88690 /* VPAdContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdContainer.h; sourceTree = "<group>"; };
+		2699D1BD1C1AC11400D88690 /* VPAdDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdDimension.h; sourceTree = "<group>"; };
+		2699D1BE1C1AC11400D88690 /* VPAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdItem.h; sourceTree = "<group>"; };
+		2699D1BF1C1AC11400D88690 /* VPAdRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdRequestOptions.h; sourceTree = "<group>"; };
+		2699D1C01C1AC11400D88690 /* VPAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdView.h; sourceTree = "<group>"; };
+		2699D1C11C1AC11400D88690 /* VPPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPPurchase.h; sourceTree = "<group>"; };
+		2699D1C21C1AC11400D88690 /* VPReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPReward.h; sourceTree = "<group>"; };
 		281C004318B2FF0B0020C962 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C004618B2FF0B0020C962 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		281C004818B2FF0B0020C962 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,18 +66,9 @@
 		281C007818B2FFDC0020C962 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		281C007918B2FFDC0020C962 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		281C007A18B2FFDC0020C962 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		28442C2918B302EA00001CD7 /* libValuePotion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libValuePotion.a; sourceTree = "<group>"; };
-		28442C2A18B302EA00001CD7 /* ValuePotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePotion.h; sourceTree = "<group>"; };
-		28442C2B18B302EA00001CD7 /* VPPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPPurchase.h; sourceTree = "<group>"; };
-		28442C2C18B302EA00001CD7 /* VPReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPReward.h; sourceTree = "<group>"; };
 		28442C2E18B3034A00001CD7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		28442C3018B3035000001CD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		28442C3218B3037100001CD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		2BCD0CB91C06CC98003E7825 /* VPAdContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdContainer.h; path = ../../../SDK/VPAdContainer.h; sourceTree = "<group>"; };
-		2BCD0CBA1C06CC98003E7825 /* VPAdDimension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdDimension.h; path = ../../../SDK/VPAdDimension.h; sourceTree = "<group>"; };
-		2BCD0CBB1C06CC98003E7825 /* VPAdItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdItem.h; path = ../../../SDK/VPAdItem.h; sourceTree = "<group>"; };
-		2BCD0CBC1C06CC98003E7825 /* VPAdRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdRequestOptions.h; path = ../../../SDK/VPAdRequestOptions.h; sourceTree = "<group>"; };
-		2BCD0CBD1C06CC98003E7825 /* VPAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VPAdView.h; path = ../../../SDK/VPAdView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28442C2D18B302EA00001CD7 /* libValuePotion.a in Frameworks */,
 				28442C3318B3037100001CD7 /* SystemConfiguration.framework in Frameworks */,
 				28442C3118B3035000001CD7 /* AdSupport.framework in Frameworks */,
+				2699D1C31C1AC11400D88690 /* libValuePotion.a in Frameworks */,
 				28442C2F18B3034A00001CD7 /* CoreTelephony.framework in Frameworks */,
 				281C004918B2FF0B0020C962 /* CoreGraphics.framework in Frameworks */,
 				281C004B18B2FF0B0020C962 /* UIKit.framework in Frameworks */,
@@ -99,6 +99,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2699D1B91C1AC11400D88690 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				2699D1BA1C1AC11400D88690 /* libValuePotion.a */,
+				2699D1BB1C1AC11400D88690 /* ValuePotion.h */,
+				2699D1BC1C1AC11400D88690 /* VPAdContainer.h */,
+				2699D1BD1C1AC11400D88690 /* VPAdDimension.h */,
+				2699D1BE1C1AC11400D88690 /* VPAdItem.h */,
+				2699D1BF1C1AC11400D88690 /* VPAdRequestOptions.h */,
+				2699D1C01C1AC11400D88690 /* VPAdView.h */,
+				2699D1C11C1AC11400D88690 /* VPPurchase.h */,
+				2699D1C21C1AC11400D88690 /* VPReward.h */,
+			);
+			name = SDK;
+			path = ../../SDK;
+			sourceTree = "<group>";
+		};
 		281C003A18B2FF0B0020C962 = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +152,7 @@
 		281C004C18B2FF0B0020C962 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				28442C2818B302EA00001CD7 /* ValuePotion-SDK */,
+				2699D1B91C1AC11400D88690 /* SDK */,
 				281C005518B2FF0B0020C962 /* AppDelegate.h */,
 				281C005618B2FF0B0020C962 /* AppDelegate.m */,
 				281C005818B2FF0B0020C962 /* Images.xcassets */,
@@ -174,22 +191,6 @@
 				281C006818B2FF0B0020C962 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		28442C2818B302EA00001CD7 /* ValuePotion-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				28442C2918B302EA00001CD7 /* libValuePotion.a */,
-				28442C2A18B302EA00001CD7 /* ValuePotion.h */,
-				2BCD0CB91C06CC98003E7825 /* VPAdContainer.h */,
-				2BCD0CBA1C06CC98003E7825 /* VPAdDimension.h */,
-				2BCD0CBB1C06CC98003E7825 /* VPAdItem.h */,
-				2BCD0CBC1C06CC98003E7825 /* VPAdRequestOptions.h */,
-				2BCD0CBD1C06CC98003E7825 /* VPAdView.h */,
-				28442C2B18B302EA00001CD7 /* VPPurchase.h */,
-				28442C2C18B302EA00001CD7 /* VPReward.h */,
-			);
-			path = "ValuePotion-SDK";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,11 +413,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample/Sample-Prefix.pch";
 				INFOPLIST_FILE = "Sample/Sample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Sample/ValuePotion-SDK",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../SDK";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -431,11 +429,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample/Sample-Prefix.pch";
 				INFOPLIST_FILE = "Sample/Sample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Sample/ValuePotion-SDK",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../SDK";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

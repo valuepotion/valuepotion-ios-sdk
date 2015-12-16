@@ -1,7 +1,7 @@
 # Change Log
 
 ## v1.1.5
-* Added a property - callbackBeforeCachingAssets of VPAdRequestOptions
+* Added a property - startRenderingAtCallback of VPAdRequestOptions
 * Improved memory management.
 
 ## v1.1.4

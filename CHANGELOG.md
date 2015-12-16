@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.5
+* Added a property - callbackBeforeCachingAssets of VPAdRequestOptions
+* Improved memory management.
+
 ## v1.1.4
 * Set default background color of VPAdView transparent.
 

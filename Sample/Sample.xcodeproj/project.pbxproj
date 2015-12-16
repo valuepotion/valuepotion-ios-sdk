@@ -40,13 +40,6 @@
 /* Begin PBXFileReference section */
 		2699D1BA1C1AC11400D88690 /* libValuePotion.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libValuePotion.a; sourceTree = "<group>"; };
 		2699D1BB1C1AC11400D88690 /* ValuePotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePotion.h; sourceTree = "<group>"; };
-		2699D1BC1C1AC11400D88690 /* VPAdContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdContainer.h; sourceTree = "<group>"; };
-		2699D1BD1C1AC11400D88690 /* VPAdDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdDimension.h; sourceTree = "<group>"; };
-		2699D1BE1C1AC11400D88690 /* VPAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdItem.h; sourceTree = "<group>"; };
-		2699D1BF1C1AC11400D88690 /* VPAdRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdRequestOptions.h; sourceTree = "<group>"; };
-		2699D1C01C1AC11400D88690 /* VPAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAdView.h; sourceTree = "<group>"; };
-		2699D1C11C1AC11400D88690 /* VPPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPPurchase.h; sourceTree = "<group>"; };
-		2699D1C21C1AC11400D88690 /* VPReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPReward.h; sourceTree = "<group>"; };
 		281C004318B2FF0B0020C962 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C004618B2FF0B0020C962 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		281C004818B2FF0B0020C962 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,13 +97,6 @@
 			children = (
 				2699D1BA1C1AC11400D88690 /* libValuePotion.a */,
 				2699D1BB1C1AC11400D88690 /* ValuePotion.h */,
-				2699D1BC1C1AC11400D88690 /* VPAdContainer.h */,
-				2699D1BD1C1AC11400D88690 /* VPAdDimension.h */,
-				2699D1BE1C1AC11400D88690 /* VPAdItem.h */,
-				2699D1BF1C1AC11400D88690 /* VPAdRequestOptions.h */,
-				2699D1C01C1AC11400D88690 /* VPAdView.h */,
-				2699D1C11C1AC11400D88690 /* VPPurchase.h */,
-				2699D1C21C1AC11400D88690 /* VPReward.h */,
 			);
 			name = SDK;
 			path = ../../SDK;

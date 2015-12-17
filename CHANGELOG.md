@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.1.6
+* Fixed bugs that occurs when requesting multiple banners at once.
+
 ## v1.1.5
 * Added a property - startRenderingAtCallback of VPAdRequestOptions
 * Improved memory management.

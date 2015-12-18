@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.1.7
+* Fixed that a UIScrollView has a VPAdView can't be scrolled to top by touching the status bar.
+
 ## v1.1.6
 * Fixed bugs that occurs when requesting multiple banners at once.
 
@@ -11,7 +14,7 @@
 * Set default background color of VPAdView transparent.
 
 ## v1.1.3
-* Fix issue that interstitials may not cache assets.
+* Fixed that interstitials may not cache assets.
 
 ## v1.1.2
 * Cache assets at Library/Caches

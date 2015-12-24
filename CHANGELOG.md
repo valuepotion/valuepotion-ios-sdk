@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.1.8
+* Fixed that a VPAdView is rendered wrong in iOS 8.x and below.
+
 ## v1.1.7
 * Fixed that a UIScrollView has a VPAdView can't be scrolled to top by touching the status bar.
 

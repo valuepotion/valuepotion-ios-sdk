@@ -30,15 +30,42 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateStatusBarState)
+                                                 name:VPValuePotionWillPresentVideoAdNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateStatusBarState)
+                                                 name:VPValuePotionDidDismissVideoAdNotification
+                                               object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return [[ValuePotion sharedInstance] isVideoPresented];
+}
+
 - (IBAction)cacheInterstitial:(id)sender
 {
     [[ValuePotion sharedInstance] cacheInterstitial:@"default"];
+}
+
+- (void)updateStatusBarState {
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (IBAction)showInterstitial:(id)sender

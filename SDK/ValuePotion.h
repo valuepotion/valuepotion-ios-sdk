@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.10
+//  Version 1.1.11
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -23,6 +23,9 @@
 typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSError * __nullable error);
 
 
+OBJC_EXTERN NSString *const __nonnull VPValuePotionWillPresentVideoAdNotification;
+OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification;
+
 
 /**
  * The ValuePotion provides many methods for presenting interstitial ads, tracking events,
@@ -43,6 +46,11 @@ typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSErr
  * The Secret Key. If you don't initialize library yet, it will be nil.
  */
 @property (nonatomic, copy, readonly, nullable) NSString *secretKey;
+
+/**
+ * A boolean value indicating whether a video ad is presented.
+ */
+@property (nonatomic, readonly, getter=isVideoPresented) BOOL videoPresented;
 
 /**
  * Set to YES, if you are developing app on test. Default is NO.
@@ -199,11 +207,40 @@ typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSErr
 - (void)didRequestRewards:(nonnull NSArray<VPReward *> *)rewards placement:(nonnull NSString *)placement;
 
 /**
- * Send after inplay view did complete conversion.
+ * Sent after inplay view did complete conversion.
  *
  * @param placement The interstitial ad's placement
  */
 - (void)didCompleteConversion:(nonnull NSString *)placement;
+
+/**
+ * Decides whether to allow or cancel to play a video ad.
+ * Call a code block decisionHandler with `YES` if you allow, otherwise call it with `NO`.
+ *
+ * If you don't implement this method, video ads are played automatically.
+ */
+- (void)decideToPlayVideo:(nonnull NSString *)placement contentSeq:(nonnull NSString *)contentSeq decisionHandler:(nonnull void (^)(BOOL play))decisionHandler;
+
+/**
+ * Sent after a user watches the video ad until the end.
+ * Call a code block closingHandler when you want to close. If you want to close the interstitial ad also, call with parameter `YES`, otherwise `NO`.
+ *
+ * If you don't implement this method, the interstitial ad will be closed automatically.
+ */
+- (void)didCompleteVideoWatching:(nonnull NSString *)placement contentSeq:(nonnull NSString *)contentSeq closingHandler:(nonnull void (^)(BOOL closeInterstitial))closingHandler;
+
+/**
+ * Sent when a video loading is failed.
+ */
+- (void)didFailToLoadVideo:(nonnull NSString *)placement error:(nonnull NSError *)error;
+
+/**
+ * Sent after a user cancels playing the video ad before the end.
+ * Call a code block closingHandler when you want to close. If you want to close the interstitial ad also, call with parameter `YES`, otherwise `NO`.
+ *
+ * If you don't implement this method, only the video view will be closed without closing the interstitial ad.
+ */
+- (void)didCancelToWatchVideo:(nonnull NSString *)placement duration:(float)duration position:(float)position closingHandler:(nonnull void (^)(BOOL closeInterstitial))closingHandler;
 
 @end
 
@@ -227,7 +264,7 @@ typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSErr
 @end
 
 
-#pragma mark - 
+#pragma mark -
 
 
 /**
@@ -241,7 +278,7 @@ typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSErr
 @end
 
 
-#pragma mark - 
+#pragma mark -
 
 
 /**

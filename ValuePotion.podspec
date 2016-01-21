@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.module_name = "ValuePotion"
 
   s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'SystemConfiguration', 'CoreTelephony', 'AdSupport'
+  s.weak_frameworks = 'AVFoundation'
 
   s.source = { :git => "https://github.com/valuepotion/valuepotion-ios-sdk.git", :tag => s.version }
 end

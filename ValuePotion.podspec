@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ValuePotion'
-  s.version  = '1.1.11'
+  s.version  = '1.1.12'
   s.summary  = 'ValuePotion Library for analysis and ad networking.'
   s.homepage = 'https://developers.valuepotion.com'
   s.requires_arc = true

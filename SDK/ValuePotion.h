@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.11
+//  Version 1.1.12
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -456,3 +456,30 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 - (void)loadAdItem:(nullable VPAdItem *)adItem;
 
 @end
+
+#pragma mark - NSError Information
+
+typedef NS_ENUM(NSInteger, VPErrorType) {
+    /** Unknown error. */
+    VPErrorTypeUnknown = 0,
+    /** Not initialized. */
+    VPErrorTypeNotInitialized,
+    /** Empty interstitial. */
+    VPErrorTypeEmptyInterstitial,
+    /** Opened interstitial exists. */
+    VPErrorTypeOpenedInterstitialExists,
+    /** Cached interstitial exists. */
+    VPErrorTypeCachedInterstitialExists,
+    /** Cached interstitial is expired. */
+    VPErrorTypeExpiredInterstitial,
+    /** Interstitial is not support current orientation. */
+    VPErrorTypeInvalidOrientation,
+    /** Interstitial is blocked by user. (eg. Don't show today) */
+    VPErrorTypeBlocked,
+    /** Request is canceled by same placement reqeusts so quickly. */
+    VPErrorTypeRequestTooSoon,
+    /** Server error. */
+    VPErrorTypeServerError,
+};
+
+OBJC_EXTERN NSString *const __nonnull kVPErrorDomain;

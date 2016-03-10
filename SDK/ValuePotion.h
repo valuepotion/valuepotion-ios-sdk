@@ -1,12 +1,22 @@
 //
 //  ValuePotion.h
-//  Version 1.1.14
+//  Version 1.1.15
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
 
 
 #import <UIKit/UIKit.h>
+
+
+#ifdef __IPHONE_9_0
+#   define AVAILABLE_SWIFT2_GENERIC
+#endif
+
+
+#ifndef __TVOS_9_0
+#   define __TVOS_PROHIBITED
+#endif
 
 
 @protocol ValuePotionDelegate;
@@ -35,7 +45,7 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  */
 @interface ValuePotion : NSObject
 
-@property (nonatomic, weak) id<ValuePotionDelegate> delegate;
+@property (nonatomic, weak, nullable) id<ValuePotionDelegate> delegate;
 
 /**
  * The Client Identifier. If you don't initialize library yet, it will be nil.
@@ -204,7 +214,11 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  * @param rewards The array of reward campaign's information
  * @param placement The interstitial ad's placement
  */
+#ifdef AVAILABLE_SWIFT2_GENERIC
 - (void)didRequestRewards:(nonnull NSArray<VPReward *> *)rewards placement:(nonnull NSString *)placement;
+#else
+- (void)didRequestRewards:(nonnull NSArray *)rewards placement:(nonnull NSString *)placement;
+#endif
 
 /**
  * Sent after inplay view did complete conversion.
@@ -411,7 +425,11 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 /**
  * The array contains ad items.
  */
+#ifdef AVAILABLE_SWIFT2_GENERIC
 @property (nonatomic, readonly, nullable) NSArray<VPAdItem *>* items;
+#else
+@property (nonatomic, readonly, nullable) NSArray* items;
+#endif
 
 @end
 

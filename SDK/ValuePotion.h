@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.15
+//  Version 1.1.16
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -294,6 +294,23 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 
 #pragma mark -
 
+typedef NS_ENUM(NSInteger, VPAdDimensionType) {
+    /** The default dimension type */
+    VPAdDimensionTypeDefault,
+    /** The dimension type for interstitial ad */
+    VPAdDimensionTypeInterstitial,
+    /** The dimension type for native banner */
+    VPAdDimensionTypeNativeBanner,
+    /** The dimension type that has 320w x 50h */
+    VPAdDimensionTypeW320H50,
+    /** The dimension type that has 320w x 100h */
+    VPAdDimensionTypeW320H100,
+    /** The dimension type that has 320w x 480h */
+    VPAdDimensionTypeW320H480,
+    /** The dimension type that has 300w x 250h */
+    VPAdDimensionTypeW300H250,
+};
+
 
 /**
  * The VPAdDimension contains width and height to reqeust ads.
@@ -326,19 +343,24 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 + (nonnull instancetype)dimensionWith320x100;
 
 /**
- * The dimension that has 320w x 300h
- */
-+ (nonnull instancetype)dimensionWith320x300;
-
-/**
  * The dimension that has 320w x 480h
  */
 + (nonnull instancetype)dimensionWith320x480;
 
 /**
+ * The dimension that has 300w x 250h
+ */
++ (nonnull instancetype)dimensionWith300x250;
+
+/**
  * This dimension is for interstitial ad. It is 320w x 480h currently.
  */
 + (nonnull instancetype)dimensionForInterstitial;
+
+/**
+ * This dimension is for native banner. It is 320w x 100h currently.
+ */
++ (nonnull instancetype)dimensionForNativeBanner;
 
 /**
  * A dimension that has any width and height.
@@ -348,6 +370,11 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 + (nonnull instancetype)dimensionWithWidth:(NSInteger)width height:(NSInteger)height;
 
 /**
+ * Create dimension with VPAdDimensionType.
+ */
++ (nonnull instancetype)dimensionWithType:(VPAdDimensionType)type;
+
+/**
  * @return a CGSize structure with placementWidth and placementHeight
  */
 - (CGSize)getSize;
@@ -355,6 +382,15 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 
 - (nonnull instancetype)init __unavailable;
 
+
+@end
+
+@interface VPAdDimension (Deprecated)
+
+/**
+ * The dimension that has 320w x 300h
+ */
++ (nonnull instancetype)dimensionWith320x300 __deprecated_msg("use +[VPAdDimension dimensionWith300x250]");
 
 @end
 
@@ -467,11 +503,27 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 - (nonnull instancetype)initWithAdItem:(nullable VPAdItem *)adItem;
 
 /**
+ * Initialize the view with ad item.
+ *
+ * @param adItem an ad item gained from a VPAdContainer
+ * @param closeBlock a code block is called when a user touches close button in banner.
+ */
+- (nonnull instancetype)initWithAdItem:(nullable VPAdItem *)adItem closeBlock:(nullable dispatch_block_t)closeBlock;
+
+/**
  * Load ad item and set view up.
  *
  * @param adItem an ad item gained from a VPAdContainer
  */
 - (void)loadAdItem:(nullable VPAdItem *)adItem;
+
+/**
+ * Load ad item and set view up.
+ *
+ * @param adItem an ad item gained from a VPAdContainer
+ * @param closeBlock a code block is called when a user touches close button in banner.
+ */
+- (void)loadAdItem:(nullable VPAdItem *)adItem closeBlock:(nullable dispatch_block_t)closeBlock;
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.16
+//  Version 1.1.17
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -286,8 +286,9 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  */
 @interface VPReward : NSObject
 
-@property (nonatomic, copy, readonly, nonnull) NSString *name;
+@property (nonatomic, strong, readonly, nonnull) NSString *name;
 @property (nonatomic, assign) NSInteger quantity;
+@property (nonatomic, strong, readonly, nullable) NSString *campaignId;
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.17
+//  Version 1.1.18
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //

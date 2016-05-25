@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.18
+//  Version 1.1.19
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -91,6 +91,11 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 - (BOOL)hasCachedInterstitial:(nonnull NSString *)placement __TVOS_PROHIBITED;
 - (void)cacheInterstitial:(nonnull NSString *)placement __TVOS_PROHIBITED;
 - (void)openInterstitial:(nullable NSString *)placement __TVOS_PROHIBITED;
+
+#pragma mark - Interstitial Methods with contentSeq
+- (BOOL)hasCachedInterstitial:(nonnull NSString *)placement contentSeq:(nullable NSString *)contentSeq __TVOS_PROHIBITED;
+- (void)cacheInterstitial:(nonnull NSString *)placement contentSeq:(nullable NSString *)contentSeq __TVOS_PROHIBITED;
+- (void)openInterstitial:(nullable NSString *)placement contentSeq:(nullable NSString *)contentSeq __TVOS_PROHIBITED;
 
 #pragma mark - RequestOptions Methods
 - (void)requestAdWithOptions:(nonnull VPAdRequestOptions *)options completion:(nonnull VPAdRequestCallback)completion __TVOS_PROHIBITED;

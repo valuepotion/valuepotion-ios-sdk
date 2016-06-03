@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.20
+//  Version 1.1.21
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -29,6 +29,13 @@
 @class VPAdItem;
 @class VPAdView;
 
+
+typedef NS_ENUM(NSInteger, VPInterstitialBackgroundStyle) {
+    VPInterstitialBackgroundBlackTranslucent = 0,
+    VPInterstitialBackgroundLightTranslucent,
+    VPInterstitialBackgroundBlackOpaque,
+    VPInterstitialBackgroundLightOpaque,
+};
 
 typedef void (^VPAdRequestCallback)(VPAdContainer * __nullable container , NSError * __nullable error);
 
@@ -133,6 +140,11 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  * @param interval second for interval. default is 1 sec.
  */
 - (void)setInterstitialMinimumInterval:(NSTimeInterval)interval __TVOS_PROHIBITED;
+
+/**
+ * Set the style of interstitial ad's background. Default is VPInterstitialBackgroundBlackTranslucent.
+ */
+@property (nonatomic, assign) VPInterstitialBackgroundStyle interstitialBackgroundStyle;
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.25
+//  Version 1.1.26
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -282,7 +282,7 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 /**
  * The VPPurchase is passed from '-[ValuePotion didRequestPurchase:placement:]' delegate method.
  *
- * @see http://developers.valuepotion.com/en/sdk_ios/3.-Advanced.html#inapp-purchase-campaign
+ * @see http://developers.valuepotion.com/en/sdk_ios/advanced.html
  */
 @interface VPPurchase : NSObject
 

@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '6.0'
+
+target 'Sample' do
+
+pod 'ValuePotion', :git => 'https://github.com/valuepotion/valuepotion-ios-sdk.git'
+#pod 'ValuePotion', :subspecs => ['Core', 'AdxSupport'], :git => 'https://github.com/valuepotion/valuepotion-ios-sdk.git'
+
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts "#{target.name}"
+  end
+end

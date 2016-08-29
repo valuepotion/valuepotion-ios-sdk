@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 ValuePotion. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "ValuePotion.h"
+@import UIKit;
+@import ValuePotion;
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, ValuePotionDelegate>
 

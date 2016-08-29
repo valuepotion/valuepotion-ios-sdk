@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D8998E28-BDDD-462D-8BF9-380DDD1B2919</string>
+	<string>7016735C-9BC0-4DF4-BF4D-A3B290D9C5C1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Sample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0292140CDC96EB344E729C529DE8270E2F7C8DF5</key>
-		<string>http://github.daumkakao.com/valuepotion/sdk_ios.git</string>
+		<string>github.com:valuepotion/sdk_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Sample/Sample.xcodeproj</string>
+	<string>Sample/Sample.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0292140CDC96EB344E729C529DE8270E2F7C8DF5</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://github.daumkakao.com/valuepotion/sdk_ios.git</string>
+	<string>github.com:valuepotion/sdk_ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

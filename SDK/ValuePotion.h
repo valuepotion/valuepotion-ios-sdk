@@ -1,6 +1,6 @@
 //
 //  ValuePotion.h
-//  Version 1.1.26
+//  Version 1.1.27
 //
 //  Copyright (c) 2015 ValuePotion. All rights reserved.
 //
@@ -8,14 +8,59 @@
 
 #import <UIKit/UIKit.h>
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
-#ifdef __IPHONE_9_0
+#ifndef __IPHONE_9_0
+# define __IPHONE_9_0   90000
+#endif
+
+#ifndef __IPHONE_10_0
+# define __IPHONE_10_0  100000
+#endif
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 #   define AVAILABLE_SWIFT2_GENERIC
 #endif
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+#   define AVAILABLE_SWIFT3_NAME
+#   define VP_SWIFT_NAME(_x) NS_SWIFT_NAME(_x)
+#   define VP_SWIFT_UNAVAILABLE(_x) NS_SWIFT_UNAVAILABLE(_x)
+#   define VP_EXTENSIBLE_STRING_ENUM NS_EXTENSIBLE_STRING_ENUM
+#else
+#   ifndef VP_SWIFT_NAME
+#       define VP_SWIFT_NAME(_x)
+#   endif
+#   ifndef VP_SWIFT_UNAVAILABLE
+#       define VP_SWIFT_UNAVAILABLE(_x)
+#   endif
+#   ifndef VP_EXTENSIBLE_STRING_ENUM
+#       define VP_EXTENSIBLE_STRING_ENUM
+#   endif
+#endif
 
-#ifndef __TVOS_9_0
+#else  // __IPHONE_OS_VERSION_MAX_ALLOWED
+
+#   ifndef VP_SWIFT_NAME
+#       define VP_SWIFT_NAME(_x)
+#   endif
+#   ifndef VP_SWIFT_UNAVAILABLE
+#       define VP_SWIFT_UNAVAILABLE(_x)
+#   endif
+#   ifndef VP_EXTENSIBLE_STRING_ENUM
+#       define VP_EXTENSIBLE_STRING_ENUM
+#   endif
+
+#endif // __IPHONE_OS_VERSION_MAX_ALLOWED
+
+
+
+#ifdef __TV_OS_VERSION_MAX_ALLOWED
+
+#ifndef __TV_OS_VERSION_MAX_ALLOWED >= __TVOS_9_0
 #   define __TVOS_PROHIBITED
+#endif
+
 #endif
 
 
@@ -84,7 +129,7 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  *
  * @return ValuePotion singleton instance.
  */
-+ (nonnull ValuePotion *)sharedInstance;
++ (nonnull ValuePotion *)sharedInstance VP_SWIFT_NAME(shared());
 
 /**
  * Initialize valuepotion library.
@@ -92,7 +137,7 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
  * @param clientId The client id to use ValuePotion sdk
  * @param secretKey The secret key
  */
-- (void)initializeWithClientId:(nonnull NSString *)clientId secretKey:(nonnull NSString *)secretKey;
+- (void)initializeWithClientId:(nonnull NSString *)clientId secretKey:(nonnull NSString *)secretKey VP_SWIFT_NAME(initialize(clientId:secretKey:));
 
 #pragma mark - Interstitial Methods
 - (BOOL)hasCachedInterstitial:(nonnull NSString *)placement __TVOS_PROHIBITED;
@@ -105,14 +150,14 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 - (void)openInterstitial:(nullable NSString *)placement contentSeq:(nullable NSString *)contentSeq __TVOS_PROHIBITED;
 
 #pragma mark - RequestOptions Methods
-- (void)requestAdWithOptions:(nonnull VPAdRequestOptions *)options completion:(nonnull VPAdRequestCallback)completion __TVOS_PROHIBITED;
+- (void)requestAdWithOptions:(nonnull VPAdRequestOptions *)options completion:(nonnull VPAdRequestCallback)completion __TVOS_PROHIBITED VP_SWIFT_NAME(requestAd(options:completion:));
 
 #pragma mark - Tracking Methods
-- (void)trackEvent:(nonnull NSString *)eventName value:(nullable NSNumber *)value;
-- (void)trackEvent:(nonnull NSString *)eventName category:(nullable NSString *)category label:(nullable NSString *)label value:(nullable NSNumber *)value;
-- (void)trackPurchaseEvent:(nonnull NSString *)eventName revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId;
-- (void)trackPurchaseEvent:(nonnull NSString *)eventName revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId campaignId:(nullable NSString *)campaignId contentId:(nullable NSString *)contentId;
-- (void)trackPurchaseEvent:(nonnull NSString *)eventName category:(nullable NSString *)category label:(nullable NSString *)label revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId campaignId:(nullable NSString *)campaignId contentId:(nullable NSString *)contentId;
+- (void)trackEvent:(nonnull NSString *)eventName value:(nullable NSNumber *)value VP_SWIFT_NAME(track(event:value:));
+- (void)trackEvent:(nonnull NSString *)eventName category:(nullable NSString *)category label:(nullable NSString *)label value:(nullable NSNumber *)value VP_SWIFT_NAME(track(event:category:label:value:));
+- (void)trackPurchaseEvent:(nonnull NSString *)eventName revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId VP_SWIFT_NAME(track(purchaseEvent:revenueAmount:currency:transactionId:productId:));
+- (void)trackPurchaseEvent:(nonnull NSString *)eventName revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId campaignId:(nullable NSString *)campaignId contentId:(nullable NSString *)contentId VP_SWIFT_NAME(track(purchaseEvent:revenueAmount:currency:transactionId:productId:campaignId:contentId:));
+- (void)trackPurchaseEvent:(nonnull NSString *)eventName category:(nullable NSString *)category label:(nullable NSString *)label revenueAmount:(double)revenueAmount currency:(nonnull NSString *)currency transactionId:(nullable NSString *)transactionId productId:(nullable NSString *)productId campaignId:(nullable NSString *)campaignId contentId:(nullable NSString *)contentId VP_SWIFT_NAME(track(purchaseEvent:category:label:revenueAmount:currency:transactionId:productId:campaignId:contentId:));
 
 #pragma mark - Push Notification Methods
 - (void)registerForPushNotification __TVOS_PROHIBITED;
@@ -314,19 +359,27 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidDismissVideoAdNotification
 
 typedef NS_ENUM(NSInteger, VPAdDimensionType) {
     /** The default dimension type */
-    VPAdDimensionTypeDefault,
+    VPAdDimensionTypeDefault __deprecated_msg("use VPAdDimensionTypeInterstitial") VP_SWIFT_UNAVAILABLE("use .interstitial") VP_SWIFT_NAME(default),
     /** The dimension type for interstitial ad */
-    VPAdDimensionTypeInterstitial,
+    VPAdDimensionTypeInterstitial VP_SWIFT_NAME(interstitial),
     /** The dimension type for native banner */
-    VPAdDimensionTypeNativeBanner,
+    VPAdDimensionTypeNativeBanner VP_SWIFT_NAME(nativeBanner),
     /** The dimension type that has 320w x 50h */
-    VPAdDimensionTypeW320H50,
+    VPAdDimensionTypeBanner VP_SWIFT_NAME(banner),
     /** The dimension type that has 320w x 100h */
-    VPAdDimensionTypeW320H100,
-    /** The dimension type that has 320w x 480h */
-    VPAdDimensionTypeW320H480,
+    VPAdDimensionTypeLargeBanner VP_SWIFT_NAME(largeBanner),
     /** The dimension type that has 300w x 250h */
-    VPAdDimensionTypeW300H250,
+    VPAdDimensionTypeMediumRectangle VP_SWIFT_NAME(mediumRectangle),
+    /** The dimension type that has 728w x 90h */
+    VPAdDimensionTypeLeaderboard VP_SWIFT_NAME(leaderboard),
+    /** The dimension type that has 320w x 480h */
+    VPAdDimensionTypeW320H480 VP_SWIFT_NAME(w320h480),
+    /** The dimension type that has 320w x 50h */
+    VPAdDimensionTypeW320H50 __deprecated_msg("use VpAdDimensionTypeBanner") VP_SWIFT_UNAVAILABLE("use .banner") VP_SWIFT_NAME(W320H50) = VPAdDimensionTypeBanner,
+    /** The dimension type that has 320w x 100h */
+    VPAdDimensionTypeW320H100 __deprecated_msg("use VpAdDimensionTypeLargeBanner") VP_SWIFT_UNAVAILABLE("use .largeBanner") VP_SWIFT_NAME(W320H100) = VPAdDimensionTypeLargeBanner,
+    /** The dimension type that has 300w x 250h */
+    VPAdDimensionTypeW300H250 __deprecated_msg("use VpAdDimensionTypeMediumRectangle") VP_SWIFT_UNAVAILABLE("use .mediumRectangle") VP_SWIFT_NAME(W320H250) = VPAdDimensionTypeMediumRectangle,
 };
 
 
@@ -346,39 +399,39 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
 @property (nonatomic, readonly) NSInteger placementHeight;
 
 /**
- * The default dimension. This dimension is for interstitial ad. It is 320w x 480h currently.
- */
-+ (nonnull instancetype)defaultDimension;
-
-/**
  * The dimension that has 320w x 50h
  */
-+ (nonnull instancetype)dimensionWith320x50;
++ (nonnull instancetype)dimensionForBanner VP_SWIFT_NAME(banner());
 
 /**
  * The dimension that has 320w x 100h
  */
-+ (nonnull instancetype)dimensionWith320x100;
-
-/**
- * The dimension that has 320w x 480h
- */
-+ (nonnull instancetype)dimensionWith320x480;
++ (nonnull instancetype)dimensionForLargeBanner VP_SWIFT_NAME(largeBanner());
 
 /**
  * The dimension that has 300w x 250h
  */
-+ (nonnull instancetype)dimensionWith300x250;
++ (nonnull instancetype)dimensionForMediumRectangle VP_SWIFT_NAME(mediumRectangle());
+
+/**
+ * This dimension is for native banner. It is 728w x 90h currently.
+ */
++ (nonnull instancetype)dimensionForLeaderboard VP_SWIFT_NAME(leaderboard());
 
 /**
  * This dimension is for interstitial ad. It is 320w x 480h currently.
  */
-+ (nonnull instancetype)dimensionForInterstitial;
++ (nonnull instancetype)dimensionForInterstitial VP_SWIFT_NAME(interstitial());
 
 /**
  * This dimension is for native banner. It is 320w x 100h currently.
  */
-+ (nonnull instancetype)dimensionForNativeBanner;
++ (nonnull instancetype)dimensionForNativeBanner VP_SWIFT_NAME(nativeBanner());
+
+/**
+ * The dimension that has 320w x 480h
+ */
++ (nonnull instancetype)dimensionWith320x480 VP_SWIFT_NAME(fullscreen());
 
 /**
  * A dimension that has any width and height.
@@ -406,9 +459,29 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
 @interface VPAdDimension (Deprecated)
 
 /**
+ * The default dimension. This dimension is for interstitial ad. It is 320w x 480h currently.
+ */
++ (nonnull instancetype)defaultDimension __deprecated_msg("use +[VPAdDimension dimensionWith320x480]");
+
+/**
+ * The dimension that has 320w x 50h
+ */
++ (nonnull instancetype)dimensionWith320x50 __deprecated_msg("use +[VPAdDimension dimensionForBanner]");
+
+/**
+ * The dimension that has 320w x 100h
+ */
++ (nonnull instancetype)dimensionWith320x100 __deprecated_msg("use +[VPAdDimension dimensionForLargeBanner]");
+
+/**
+ * The dimension that has 300w x 250h
+ */
++ (nonnull instancetype)dimensionWith300x250 __deprecated_msg("use +[VPAdDimension dimensionWithMediumRectangle]");
+
+/**
  * The dimension that has 320w x 300h
  */
-+ (nonnull instancetype)dimensionWith320x300 __deprecated_msg("use +[VPAdDimension dimensionWith300x250]");
++ (nonnull instancetype)dimensionWith320x300 __deprecated_msg("use +[VPAdDimension dimensionWithMediumRectangle]");
 
 @end
 
@@ -480,9 +553,9 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
  * The array contains ad items.
  */
 #ifdef AVAILABLE_SWIFT2_GENERIC
-@property (nonatomic, readonly, nullable) NSArray<VPAdItem *>* items;
+@property (nonatomic, readonly, nonnull) NSArray<VPAdItem *>* items;
 #else
-@property (nonatomic, readonly, nullable) NSArray* items;
+@property (nonatomic, readonly, nonnull) NSArray* items;
 #endif
 
 @end
@@ -518,7 +591,7 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
  *
  * @param adItem an ad item gained from a VPAdContainer
  */
-- (nonnull instancetype)initWithAdItem:(nullable VPAdItem *)adItem;
+- (nonnull instancetype)initWithAdItem:(nonnull VPAdItem *)adItem;
 
 /**
  * Initialize the view with ad item.
@@ -526,14 +599,14 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
  * @param adItem an ad item gained from a VPAdContainer
  * @param closeBlock a code block is called when a user touches close button in banner.
  */
-- (nonnull instancetype)initWithAdItem:(nullable VPAdItem *)adItem closeBlock:(nullable dispatch_block_t)closeBlock;
+- (nonnull instancetype)initWithAdItem:(nonnull VPAdItem *)adItem closeBlock:(nonnull dispatch_block_t)closeBlock;
 
 /**
  * Load ad item and set view up.
  *
  * @param adItem an ad item gained from a VPAdContainer
  */
-- (void)loadAdItem:(nullable VPAdItem *)adItem;
+- (void)loadAdItem:(nonnull VPAdItem *)adItem;
 
 /**
  * Load ad item and set view up.
@@ -541,7 +614,7 @@ typedef NS_ENUM(NSInteger, VPAdDimensionType) {
  * @param adItem an ad item gained from a VPAdContainer
  * @param closeBlock a code block is called when a user touches close button in banner.
  */
-- (void)loadAdItem:(nullable VPAdItem *)adItem closeBlock:(nullable dispatch_block_t)closeBlock;
+- (void)loadAdItem:(nonnull VPAdItem *)adItem closeBlock:(nonnull dispatch_block_t)closeBlock;
 
 @end
 
@@ -552,8 +625,8 @@ typedef NS_ENUM(NSInteger, VPErrorType) {
     VPErrorTypeUnknown = 0,
     /** Not initialized. */
     VPErrorTypeNotInitialized,
-    /** Empty interstitial. */
-    VPErrorTypeEmptyInterstitial,
+    /** No ad. */
+    VPErrorTypeNoFill,
     /** Opened interstitial exists. */
     VPErrorTypeOpenedInterstitialExists,
     /** Cached interstitial exists. */
@@ -568,6 +641,8 @@ typedef NS_ENUM(NSInteger, VPErrorType) {
     VPErrorTypeRequestTooSoon,
     /** Server error. */
     VPErrorTypeServerError,
+    /** Empty interstitial. */
+    VPErrorTypeEmptyInterstitial = VPErrorTypeNoFill,
 };
 
 OBJC_EXTERN NSString *const __nonnull kVPErrorDomain;

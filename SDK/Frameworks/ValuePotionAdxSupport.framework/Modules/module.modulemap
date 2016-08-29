@@ -1,0 +1,6 @@
+framework module ValuePotionAdxSupport {
+  umbrella header "ValuePotionAdxSupport.h"
+
+  export *
+  module * { export * }
+}

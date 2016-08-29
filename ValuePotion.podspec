@@ -1,25 +1,55 @@
 Pod::Spec.new do |s|
   s.name     = 'ValuePotion'
-  s.version  = '1.1.26'
+  s.version  = '1.1.27'
   s.summary  = 'ValuePotion Library for analysis and ad networking.'
   s.homepage = 'https://developers.valuepotion.com'
   s.requires_arc = true
-  s.authors  = {'ValuePotion' => 'support@valuepotion.com' }
+  s.authors  = {'ValuePotion' => 'dev.support@valuepotion.com' }
   s.license  = {
     :type => 'Copyright',
     :text => 'Copyright to ValuePotion 2015. All right reserved.'
   }
   
   s.platform = :ios, "6.0"
-
-  s.source_files = "SDK/*.h"
-  s.public_header_files = "SDK/*.h"
-  s.vendored_libraries = "SDK/*.a"
   s.module_name = "ValuePotion"
 
-  s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'SystemConfiguration', 'CoreTelephony', 'AdSupport'
-  s.weak_frameworks = 'AVFoundation'
+  puts "version: #{s.version}"
+  s.preserve_paths = 'SDK/Frameworks/*.framework'
+  s.source = { :git => "https://github.com/valuepotion/valuepotion-ios-sdk.git" }
 
-  s.source = { :git => "https://github.com/valuepotion/valuepotion-ios-sdk.git", :tag => s.version }
+  s.default_subspec = 'Core'
+
+  s.subspec 'Core' do |core|
+    core.vendored_frameworks = "SDK/Frameworks/ValuePotion.framework"
+
+    core.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'SystemConfiguration', 'CoreTelephony', 'AdSupport', 'MediaPlayer'
+    core.weak_frameworks = 'AVFoundation'
+  end
+
+  s.subspec 'AdxSupport' do |adx|
+    adx.dependency "ValuePotion/Core"
+    adx.platform = :ios, "6.0"
+    adx.vendored_frameworks = "SDK/Frameworks/ValuePotionAdxSupport.framework"
+
+    adx.frameworks = "GoogleMobileAds"
+  end
+
+  s.subspec 'FacebookSupport' do |fb|
+    fb.dependency "ValuePotion/Core"
+    fb.platform = :ios, "7.0"
+    fb.vendored_frameworks = "SDK/Frameworks/ValuePotionFacebookSupport.framework"
+
+    fb.frameworks = "Bolts", "FBSDKCoreKit"
+  end
+
+  s.subspec 'AdColonySupport' do |adc|
+    adc.dependency "ValuePotion/Core"
+    adc.platform = :ios, "6.0"
+    adc.vendored_frameworks = "SDK/Frameworks/ValuePotionAdColonySupport.framework"
+
+    adc.libraries = "z.1"
+    adc.frameworks = "AdColony", "EventKit", "EventKitUI", "MessageUI", "AudioToolbox", "CoreMedia"
+    adc.weak_frameworks = "Social", "StoreKit", "WebKit"
+  end
 end
 

@@ -1,6 +1,0 @@
-framework module ValuePotionAdColonySupport {
-  umbrella header "ValuePotionAdColonySupport.h"
-
-  export *
-  module * { export * }
-}

@@ -1,5 +1,6 @@
 //
 //  ValuePotionFacebookSupport.h
+//  Version 1.2.0
 //
 //  Copyright (c) 2016 ValuePotion. All rights reserved.
 //
@@ -16,6 +17,7 @@ OBJC_EXTERN NSString *const __nonnull VPValuePotionDidReceiveFacebookAppLinkNoti
 @interface ValuePotion (FacebookSupportExtension)
 
 + (void)useFacebookDeepLink;
++ (void)useFacebookAudienceNetwork;
 
 - (BOOL)handleAppLinkUrl:(nonnull NSURL *)url VP_SWIFT_NAME(handle(appLink:));
 - (BOOL)handleAppLinkUrl:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication VP_SWIFT_NAME(handle(appLink:sourceApplication:));

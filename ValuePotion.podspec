@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ValuePotion'
-  s.version  = '1.1.31'
+  s.version  = '1.2.0'
   s.summary  = 'ValuePotion Library for analysis and ad networking.'
   s.homepage = 'https://developers.valuepotion.com'
   s.requires_arc = true
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
     core.vendored_frameworks = "SDK/Frameworks/ValuePotion.framework"
+    core.resource = "SDK/Frameworks/ValuePotion.framework/ValuePotion.bundle"
 
     core.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'SystemConfiguration', 'CoreTelephony', 'AdSupport', 'MediaPlayer'
     core.weak_frameworks = 'AVFoundation'

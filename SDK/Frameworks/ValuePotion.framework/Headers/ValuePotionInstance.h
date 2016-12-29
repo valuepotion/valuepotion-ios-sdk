@@ -1,7 +1,6 @@
 //
 //  ValuePotionInstance.h
 //
-//  Created by sven on 2016. 9. 2..
 //  Copyright © 2016년 ValuePotion. All rights reserved.
 //
 

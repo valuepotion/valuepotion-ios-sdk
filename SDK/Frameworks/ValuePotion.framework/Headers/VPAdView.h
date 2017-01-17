@@ -16,13 +16,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-typedef NS_ENUM(NSInteger, VPAdViewVideoPlayerLayout) {
-    VPAdViewVideoPlayerLayoutRound,
-    VPAdViewVideoPlayerLayoutTotal,
-    VPAdViewVideoPlayerLayoutRemained,
-    VPAdViewVideoPlayerLayoutUnderbar,
-};
+typedef NS_OPTIONS(NSInteger, VPAdViewVideoPlayerLayout) {
+    VPAdViewVideoPlayerLayoutTitleLeft              = 1,
+    VPAdViewVideoPlayerLayoutTitleRight             = 2,
+    VPAdViewVideoPlayerLayoutTitleCenter            = 3,
 
+    VPAdViewVideoPlayerLayoutProgressRound          = 1 << 4,
+    VPAdViewVideoPlayerLayoutProgressTotal          = 2 << 4,
+    VPAdViewVideoPlayerLayoutProgressRemained       = 3 << 4,
+    VPAdViewVideoPlayerLayoutProgressUnderbar       = 4 << 4,
+
+    VPAdViewVideoPlayerLayoutRound __deprecated_msg("use VPAdViewVideoPlayerLayoutProgressRound") = VPAdViewVideoPlayerLayoutProgressRound,
+    VPAdViewVideoPlayerLayoutTotal __deprecated_msg("use VPAdViewVideoPlayerLayoutProgressTotal") = VPAdViewVideoPlayerLayoutProgressTotal,
+    VPAdViewVideoPlayerLayoutRemained __deprecated_msg("use VPAdViewVideoPlayerLayoutProgressRemained") = VPAdViewVideoPlayerLayoutProgressRemained,
+    VPAdViewVideoPlayerLayoutUnderbar __deprecated_msg("use VPAdViewVideoPlayerLayoutProgressUnderbar") = VPAdViewVideoPlayerLayoutProgressUnderbar,
+};
 
 
 @protocol VPAdViewDelegate <NSObject>
@@ -94,7 +102,7 @@ typedef NS_ENUM(NSInteger, VPAdViewVideoPlayerLayout) {
 
 + (void)setVideoPlayerLayout:(VPAdViewVideoPlayerLayout)layout VP_SWIFT_NAME(set(videoPlayerLayout:));
 
-+ (VPAdViewVideoPlayerLayout)getVideoPlayerLayout VP_SWIFT_NAME(getVideoPlayerLayout());
++ (VPAdViewVideoPlayerLayout)getVideoPlayerLayout;
 
 + (void)registerCustomBundle:(NSBundle *)customBundle;
 

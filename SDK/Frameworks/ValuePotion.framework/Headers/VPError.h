@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger, VPErrorType) {
     VPErrorTypeRequestTooSoon,
     /** Server error. */
     VPErrorTypeServerError,
+    /** Wrong video request. */
+    VPErrorTypeWrongVideoRequest,
     /** Empty interstitial. */
     VPErrorTypeEmptyInterstitial = VPErrorTypeNoFill,
 };

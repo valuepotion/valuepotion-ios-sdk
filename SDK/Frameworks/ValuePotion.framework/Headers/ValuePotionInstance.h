@@ -100,6 +100,7 @@ OBJC_EXTERN NSString *const VPValuePotionDidDismissVideoAdNotification;
 - (void)unregisterForPushNotification __TVOS_PROHIBITED;
 - (BOOL)isPushNotificationEnabled __TVOS_PROHIBITED;
 - (void)registerPushToken:(NSData *)token __TVOS_PROHIBITED;
+- (void)registerPushTokenString:(NSString *)tokenString __TVOS_PROHIBITED;
 - (void)forwardPushInfo:(nullable NSDictionary *)info __TVOS_PROHIBITED;
 
 #pragma mark - UserInfo Methods

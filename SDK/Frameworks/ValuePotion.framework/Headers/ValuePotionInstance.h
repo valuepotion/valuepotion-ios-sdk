@@ -240,12 +240,12 @@ OBJC_EXTERN NSString *const VPValuePotionDidDismissVideoAdNotification;
  *
  * If you don't implement this method, the interstitial ad will be closed automatically.
  */
-- (void)didCompleteVideoWatching:(NSString *)placement contentSeq:(NSString *)contentSeq closingHandler:(void (^)(BOOL closeInterstitial))closingHandler;
+- (void)didCompleteVideoWatching:(NSString *)placement contentSeq:(NSString *)contentSeq closeOnCall:(BOOL)closeOnCall closingHandler:(void (^)(BOOL closeInterstitial))closingHandler;
 
 /**
  * Sent when a video loading is failed.
  */
-- (void)didFailToLoadVideo:(NSString *)placement error:(NSError *)error;
+- (void)didFailToLoadVideo:(NSString *)placement error:(NSError *)error closeOnCall:(BOOL)closeOnCall closingHandler:(void (^)(BOOL closeInterstitial))closingHandler;
 
 /**
  * Sent after a user cancels playing the video ad before the end.
@@ -253,7 +253,7 @@ OBJC_EXTERN NSString *const VPValuePotionDidDismissVideoAdNotification;
  *
  * If you don't implement this method, only the video view will be closed without closing the interstitial ad.
  */
-- (void)didCancelToWatchVideo:(NSString *)placement duration:(float)duration position:(float)position closingHandler:(void (^)(BOOL closeInterstitial))closingHandler;
+- (void)didCancelToWatchVideo:(NSString *)placement duration:(float)duration position:(float)position closeOnCall:(BOOL)closeOnCall closingHandler:(void (^)(BOOL closeInterstitial))closingHandler;
 
 @end
 

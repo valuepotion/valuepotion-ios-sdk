@@ -1,6 +1,6 @@
 //
 //  ValuePotionFacebookSupport.h
-//  Version 1.2.1
+//  Version 1.2.9
 //
 //  Copyright (c) 2016 ValuePotion. All rights reserved.
 //

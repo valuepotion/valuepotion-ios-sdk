@@ -1,6 +1,0 @@
-framework module ValuePotionFacebookSupport {
-  umbrella header "ValuePotionFacebookSupport.h"
-
-  export *
-  module * { export * }
-}
